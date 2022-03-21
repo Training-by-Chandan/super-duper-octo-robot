@@ -13,3 +13,12 @@
 ## Git Configuration
 1. Set the user name : `git config --global user.name "<your name here>"`
 1. Set the user email : `git config --global user.email "<your email here>"`
+
+## Check the logs
+1. Check the logs of the last commit : `git log`
+1. Check the logs of the last commit : `git log --oneline`
+
+## Check the diiferences
+1. Check the differences between two commits : `git diff <commit-id> <commit-id>`
+1. Check the differences of files between two commits : `git diff <commit-id> <commit-id> <file-name>`
+1. Check the difference between last commit and the current state : `git diff <filename>`
