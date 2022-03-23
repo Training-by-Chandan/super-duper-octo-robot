@@ -29,3 +29,5 @@
 1. Check the status of the branch : `git branch`
 1. Switch to new branch : `git checkout <branch-name>`
 
+## Merge branches
+1. Merge branches : `git merge --no-ff <branch-name>`
