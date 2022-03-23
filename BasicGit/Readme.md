@@ -22,3 +22,9 @@
 1. Check the differences between two commits : `git diff <commit-id> <commit-id>`
 1. Check the differences of files between two commits : `git diff <commit-id> <commit-id> <file-name>`
 1. Check the difference between last commit and the current state : `git diff <filename>`
+
+## Branches
+1. Create a new branch : `git branch <branch-name>`
+1. Check the status of the branch : `git branch`
+1. Switch to new branch : `git checkout <branch-name>`
+
