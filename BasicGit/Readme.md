@@ -31,3 +31,11 @@
 
 ## Merge branches
 1. Merge branches : `git merge --no-ff <branch-name>`
+
+## Revert changes
+1. Revert changes : `git revert <commit-id>`
+1. Stash changes : `git stash`
+1. Unstash changes : `git stash pop`
+1. Reset changes : `git reset --hard`
+1. Reset changes : `git reset --soft`
+1. Unstage files : `git restore --staged .`
