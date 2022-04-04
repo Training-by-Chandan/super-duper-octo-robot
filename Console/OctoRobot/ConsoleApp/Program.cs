@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace Octo.Robot
 {
@@ -6,8 +7,92 @@ namespace Octo.Robot
     {
         private static void Main()
         {
-            //DataTypes();
-            ConditionalStatement();
+            var res = "N";
+            do
+            {
+                //DataTypes();
+                //ConditionalStatement();
+                //Looping();
+                StringConcat();
+
+                Console.WriteLine("Do you want to continue more? (Y/N)");
+                res = Console.ReadLine();
+            } while (res.ToUpper() == "Y");
+        }
+
+        private static void StringConcat()
+        {
+            string a = "Hello";
+            string b = "Everyone";
+
+            //string concatenation
+            Console.WriteLine("\nUsing String Concatenation\n===============================");
+            string c = a + " " + b;
+            Console.WriteLine(c);
+
+            //string formatting
+            //string[] str = new string[] { "Hello", "Everyone", "Broadway" };
+            Console.WriteLine("\nUsing String Formatting\n===============================");
+            string template = "Hi! {0}, we welcome you";
+            string result1 = string.Format(template, "Chandan", "Test");
+            Console.WriteLine(result1);
+            Console.WriteLine(template, "Broadway");
+
+            //string interpolation
+            Console.WriteLine("\nUsing String Interpolation\n===============================");
+            string result2 = $"Hi {b}, we welcome you";
+            Console.WriteLine(result2);
+
+            //string builder
+            Console.WriteLine("\nUsing String Builder\n===============================");
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            sb.AppendLine("Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.");
+            Console.WriteLine(sb.ToString());
+
+            //some string functions
+            var days = "      Sunday, Monday, Tuesday   , Wednesday, Thursday, Friday, Saturday     ";
+            Console.WriteLine(days.TrimStart());
+        }
+
+        private static void Looping()
+        {
+            //Requirements : Initialization, Breaking condition, increment
+
+            //Unknown Quantity
+            //While: First Check then execute, do while: First execute then check
+            //while loop
+            //while (true)
+            //{
+            //this code is infinite loop
+            //}
+
+            //do while
+            //do
+            //{
+            //} while (true);
+
+            //known quantity
+            //for loop
+            for (int i = 0; i < 10; i++)
+            {
+                for (int j = 0; j < 10; j++)
+                {
+                    if (j == 2) break;
+                }
+                if (i == 5) break;
+
+                Console.WriteLine(i);
+                //continue / break
+            }
+
+            //
         }
 
         //Conditional Statements
@@ -26,18 +111,34 @@ namespace Octo.Robot
             else if (num == 7) Console.WriteLine("Saturday");
             else Console.WriteLine("Not a valid day");
 
-            var day = "";
-            if (num == 1) day = "Sunday";
-            else if (num == 2) day = "Monday";
-            else if (num == 3) day = "Tuesday";
-            else if (num == 4) day = "Wednesday";
-            else if (num == 5) day = "Thursday";
-            else if (num == 6) day = "Friday";
-            else if (num == 7) day = "Saturday";
-            else day = "Not a valid day";
+            var days = "";
+            if (num == 1) days = "Sunday";
+            else if (num == 2) days = "Monday";
+            else if (num == 3) days = "Tuesday";
+            else if (num == 4) days = "Wednesday";
+            else if (num == 5) days = "Thursday";
+            else if (num == 6) days = "Friday";
+            else if (num == 7) days = "Saturday";
+            else days = "Not a valid day";
+
+            var daytype = "";
+            if (num == 1 || num == 7)
+            {
+                daytype = "Weekends";
+            }
+            else if (num == 2 || num == 3 || num == 4 || num == 5 || num == 6)
+            {
+                daytype = "Weekdays";
+            }
+            else
+            {
+                daytype = "Not valid day type";
+            }
+
+            daytype = (num == 1 || num == 7) ? "Weekends" : (num == 2 || num == 3 || num == 4 || num == 5 || num == 6) ? "Weekdays" : "Not a valid daytype";
 
             //tenary operator : (condition) ? <true values> : false values;
-            day = num == 1 ? "Sunday" : num == 2 ? "Monday" : num == 3 ? "Tuesday" : num == 4 ? "Wednesday" : num == 5 ? "Thursday" : num == 6 ? "Friday" : num == 7 ? "Saturday" : "Not a valid day";
+            days = num == 1 ? "Sunday" : num == 2 ? "Monday" : num == 3 ? "Tuesday" : num == 4 ? "Wednesday" : num == 5 ? "Thursday" : num == 6 ? "Friday" : num == 7 ? "Saturday" : "Not a valid day";
 
             Console.WriteLine("Enter a number");
             var number = Convert.ToInt32(Console.ReadLine());
@@ -84,6 +185,22 @@ namespace Octo.Robot
 
                 default:
                     Console.WriteLine("Not a valid day");
+                    break;
+            }
+
+            switch (num)
+            {
+                case 1:
+                case 7:
+                    daytype = "Weekends";
+                    break;
+
+                case int n when (n >= 2 && n <= 6):
+                    daytype = "Weekdays";
+                    break;
+
+                default:
+                    daytype = "Not a valid day type";
                     break;
             }
         }
