@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace Octo.Robot
@@ -13,11 +14,58 @@ namespace Octo.Robot
                 //DataTypes();
                 //ConditionalStatement();
                 //Looping();
-                StringConcat();
+                //StringConcat();
+                //Arrays();
+                DateTimes();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void DateTimes()
+        {
+            var timezoneInfo = TimeZoneInfo.GetSystemTimeZones();
+            foreach (var item in timezoneInfo)
+            {
+                Console.WriteLine(item.StandardName);
+            }
+            Console.WriteLine();
+            var datenow = DateTime.Now;
+            var dateatr = DateTime.Now.ToString("MMM dd, yyyy hh:mm:ss tt");
+            Console.WriteLine($"Nepal => {dateatr}");
+
+            //Gets the list of standard timezone info
+
+            Console.WriteLine($"Central Standard Time => {TimeZoneInfo.ConvertTimeBySystemTimeZoneId(DateTime.Now, "Central Standard Time")}");
+
+            DateTime dt = new DateTime(1990, 03, 23);
+            var diff = DateTime.Now - dt;
+            Console.WriteLine($"{diff.TotalDays / 365}");
+        }
+
+        private static void Arrays()
+        {
+            var days = "Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday";
+            var arr = days.Split(",");
+            //initialization
+            var arr1 = new int[] { 1, 2, 3, 4, 5, 6 };
+            var arr2 = new int[3];
+            var newArr = new int[5];
+            newArr[0] = 10;
+            newArr[1] = 13;
+            newArr[2] = 12;
+            newArr[3] = 15;
+            newArr[4] = 14;
+            Array.Resize(ref newArr, newArr.Length + 1);
+            Array.Sort(newArr);
+            Array.Reverse(newArr);
+            Array.Copy(arr1, arr2, 3);
+            Array.Copy(arr1, 3, arr2, 1, 2);
+            Array.Copy(arr1, 1, arr2, 0, 3);
+
+            //newArr[5] = 18;
+            //0 to n-1 : 0 to 4
         }
 
         private static void StringConcat()
