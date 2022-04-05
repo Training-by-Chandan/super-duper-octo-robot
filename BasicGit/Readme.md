@@ -39,3 +39,8 @@
 1. Reset changes : `git reset --hard`
 1. Reset changes : `git reset --soft`
 1. Unstage files : `git restore --staged .`
+
+## Add gitignore
+1. Add a .gitignore file : `touch .gitignore`
+1. Add a .gitignore file : `echo "*.log" >> .gitignore`
+1. Clear the cache : 'git rm -r --cached .'
