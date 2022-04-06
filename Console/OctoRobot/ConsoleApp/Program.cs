@@ -16,11 +16,24 @@ namespace Octo.Robot
                 //Looping();
                 //StringConcat();
                 //Arrays();
-                DateTimes();
+                //DateTimes();
+                ClassAndObjects();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void ClassAndObjects()
+        {
+            HumanBeings h1 = new HumanBeings();
+            Console.WriteLine(h1.GetHashCode());
+            h1 = new HumanBeings();
+            Console.WriteLine(h1.GetHashCode());
+
+            HumanBeings h2 = new HumanBeings("Ramesh");
+            HumanBeings h3 = new(1, "Suresh");
+            var h4 = new HumanBeings("Suresh", 20);
         }
 
         private static void DateTimes()
