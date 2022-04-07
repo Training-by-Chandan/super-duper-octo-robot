@@ -41,6 +41,19 @@
         private int age;
 
         //3. Properties
+        public string FirstName { get; set; } = "Babu";
+
+        private string first_name;
+
+        public string First_Name {
+            get {
+                return first_name;
+            }
+            set {
+                first_name = value;
+            }
+        }
+
         //4. Methods / Functions / Actions
         //5. Destructor //not usable
         //6. Events / Delegates

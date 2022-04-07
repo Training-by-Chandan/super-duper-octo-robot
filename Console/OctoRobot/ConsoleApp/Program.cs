@@ -17,11 +17,38 @@ namespace Octo.Robot
                 //StringConcat();
                 //Arrays();
                 //DateTimes();
-                ClassAndObjects();
+                //ClassAndObjects();
+                PropertiesEaxmple();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void PropertiesEaxmple()
+        {
+            //HumanBeings h1 = new HumanBeings();
+            //h1.First_Name = "Chandan";
+            //Console.WriteLine(h1.First_Name);
+            StudentInfo s1 = new StudentInfo();
+            s1.FirstName = "Bishal";
+            s1.MiddleName = "Kumar";
+            s1.LastName = "Yonghang";
+            Console.WriteLine(s1.FullName);
+            Console.WriteLine("\nWhen the value is greater than 100\n========================");
+            s1.ScienceMarks = 101;
+            s1.MathMarks = 57;
+            Console.WriteLine($"Science = {s1.ScienceMarks}\nMath = {s1.MathMarks}\nTotal = {s1.Total}\nPercentage = {s1.Percentage}\nDivision = {s1.Division}");
+
+            Console.WriteLine("\nWhen the value is less than 0\n========================");
+            s1.ScienceMarks = -101;
+            s1.MathMarks = 67.53;
+            Console.WriteLine($"Science = {s1.ScienceMarks}\nMath = {s1.MathMarks}\nTotal = {s1.Total}\nPercentage = {s1.Percentage}\nDivision = {s1.Division}");
+
+            Console.WriteLine("\nWhen the value is between 0 and 100\n========================");
+            s1.ScienceMarks = 4.83;
+            s1.MathMarks = 3.54;
+            Console.WriteLine($"Science = {s1.ScienceMarks}\nMath = {s1.MathMarks}\nTotal = {s1.Total}\nPercentage = {s1.Percentage}\nDivision = {s1.Division}");
         }
 
         private static void ClassAndObjects()
@@ -38,11 +65,7 @@ namespace Octo.Robot
 
         private static void DateTimes()
         {
-            var timezoneInfo = TimeZoneInfo.GetSystemTimeZones();
-            foreach (var item in timezoneInfo)
-            {
-                Console.WriteLine(item.StandardName);
-            }
+            TimeZone();
             Console.WriteLine();
             var datenow = DateTime.Now;
             var dateatr = DateTime.Now.ToString("MMM dd, yyyy hh:mm:ss tt");
@@ -55,6 +78,15 @@ namespace Octo.Robot
             DateTime dt = new DateTime(1990, 03, 23);
             var diff = DateTime.Now - dt;
             Console.WriteLine($"{diff.TotalDays / 365}");
+        }
+
+        private static void TimeZone()
+        {
+            var timezoneInfo = TimeZoneInfo.GetSystemTimeZones();
+            foreach (var item in timezoneInfo)
+            {
+                Console.WriteLine(item.StandardName);
+            }
         }
 
         private static void Arrays()
