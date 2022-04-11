@@ -9,7 +9,7 @@
         //c. Name is same as that of Class name
         //d. Runs only once in its lifetime
         //e. Can be overloaded
-        //f. mostly public, in some cases public static and in some cases protected
+        //f. mostly public, in some cases static and in some cases protected
         public HumanBeings()
         {
             _fname = "Babu";
