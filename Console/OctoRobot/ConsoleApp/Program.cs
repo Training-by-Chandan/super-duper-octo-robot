@@ -18,15 +18,92 @@ namespace Octo.Robot
                 //Arrays();
                 //DateTimes();
                 //ClassAndObjects();
-                PropertiesEaxmple();
+                //PropertiesEaxmple();
+                //FunctionsExampleV1();
+                //OperatorOverloading();
+                StaticAndNonStatic();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
         }
 
+        private static void StaticAndNonStatic()
+        {
+            StaticClass.J = 30;
+            StaticClass.FunctionOne();
+
+            NonStaticClass s1 = new NonStaticClass();
+            s1.i = 1;
+            s1.j = 1;
+            s1.FunctionOne();
+
+            NonStaticClass.istatic = 10;
+            NonStaticClass.jstatic = 20;
+            NonStaticClass.StaticFunctionOne();
+        }
+
+        private static void OperatorOverloading()
+        {
+            int i = 10;
+            int j = 20;
+            int k = i + j;
+
+            StudentInfo s1 = new StudentInfo();
+            s1.FirstName = "Bishal";
+            s1.MiddleName = "Kumar";
+            s1.LastName = "Yonghang";
+            s1.ScienceMarks = 50;
+            s1.MathMarks = 57;
+            StudentInfo s2 = new StudentInfo();
+            s2.FirstName = "Bishal";
+            s2.MiddleName = "Kumar";
+            s2.LastName = "Yonghang";
+            s2.ScienceMarks = 50;
+            s2.MathMarks = 57;
+
+            var final = new StudentInfo();
+            final.FirstName = "Bishal";
+            final.MiddleName = "Kumar";
+            final.LastName = "Yonghang";
+            final.FullMarks = s1.FullMarks + s2.FullMarks;
+            final.PassMarks = s1.PassMarks + s2.PassMarks;
+            final.ScienceMarks = s1.ScienceMarks + s2.ScienceMarks;
+            final.MathMarks = s1.MathMarks + s2.MathMarks;
+
+            //s1++;
+            var finalv2 = s1 + s2 + s1 + s2;
+            //s1 = 2 + s1 + 2;
+
+            //Console.WriteLine(s1 == s1);
+            Console.WriteLine(s1 == s2);
+        }
+
+        private static void FunctionsExampleV1()
+        {
+            //TODO left for chandan
+            StudentInfo s1 = new StudentInfo();
+            s1.DoSomething(b: "", c: 1f, a: 1);
+            s1.DoSomething(1, "", 1f);
+            s1.DoSomething(1, c: 1f, b: "");
+
+            s1.FunctionTwo();
+            int b = 0;
+            int c = 0;
+            int e = 0;
+            var res = s1.Add(1, 1);
+
+            s1.FunctionOne(5, out c);
+            s1.FunctionThree(ref b);
+            res = s1.Add(1, 1);
+            var d = s1.FunctionFour();
+            Console.WriteLine();
+            res = s1.Add(1, 1);
+        }
+
         private static void PropertiesEaxmple()
         {
+            //todo left for Santosh
             //HumanBeings h1 = new HumanBeings();
             //h1.First_Name = "Chandan";
             //Console.WriteLine(h1.First_Name);
