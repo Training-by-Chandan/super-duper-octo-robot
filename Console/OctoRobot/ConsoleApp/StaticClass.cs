@@ -27,7 +27,7 @@
         public int j { get; set; }
         public static int jstatic { get; set; }
 
-        public void FunctionOne()
+        public void FunctionOne(params int[] a)
         {
             //nonstatic members have access to both static and non static members
             //can be accessed only by creating objects
