@@ -21,11 +21,34 @@ namespace Octo.Robot
                 //PropertiesEaxmple();
                 //FunctionsExampleV1();
                 //OperatorOverloading();
-                StaticAndNonStatic();
-
+                //StaticAndNonStatic();
+                InheritanceExample();
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void InheritanceExample()
+        {
+            LivingThings l1 = new LivingThings(1);
+            Animal a = new Animal();
+            Plants p1 = new Plants();
+            Vertibrates v1 = new Vertibrates();
+            Vertibrates v2 = new Vertibrates(1);
+
+            LivingThings a2 = new Animal();
+            Console.WriteLine("\nfrom living thin object");
+            l1.Test();
+            Console.WriteLine("\nfrom animal object");
+            a.Test();
+            Console.WriteLine("\nfrom animal object converted to living thing");
+            a2.Test();
+            LivingThings v3 = new Vertibrates();
+            Console.WriteLine("\nfrom vertibrate object converted to living things");
+            v3.Test();
+            LivingThings h1 = new Human();
+            Console.WriteLine("\nfrom human object converted to living things");
+            h1.Test();
         }
 
         private static void StaticAndNonStatic()
@@ -41,6 +64,7 @@ namespace Octo.Robot
             NonStaticClass.istatic = 10;
             NonStaticClass.jstatic = 20;
             NonStaticClass.StaticFunctionOne();
+            Console.WriteLine();
         }
 
         private static void OperatorOverloading()
