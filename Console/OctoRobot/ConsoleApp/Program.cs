@@ -22,10 +22,40 @@ namespace Octo.Robot
                 //FunctionsExampleV1();
                 //OperatorOverloading();
                 //StaticAndNonStatic();
-                InheritanceExample();
+                //InheritanceExample();
+                ShapesExample();
+
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void ShapesExample()
+        {
+            Console.WriteLine("Press 1 for Circle, 2 for Rectangle and 3 for Square");
+            var choice = Convert.ToInt32(Console.ReadLine());
+            var shape = ShapeFactory(choice);
+            shape.GetInput();
+            shape.Area();
+            shape.Perimeter();
+        }
+
+        private static IShape ShapeFactory(int i)
+        {
+            switch (i)
+            {
+                case 1:
+                    return new Circle();
+
+                case 2:
+                    return new Rectangle();
+
+                case 3:
+                    return new Triangle();
+
+                default:
+                    return new Square();
+            }
         }
 
         private static void InheritanceExample()
@@ -38,17 +68,22 @@ namespace Octo.Robot
 
             LivingThings a2 = new Animal();
             Console.WriteLine("\nfrom living thin object");
-            l1.Test();
+            l1.Eat();
             Console.WriteLine("\nfrom animal object");
-            a.Test();
+            a.Eat();
             Console.WriteLine("\nfrom animal object converted to living thing");
-            a2.Test();
+            a2.Eat();
+            LivingThings p2 = new Plants();
+            Console.WriteLine("\nfrom plant object");
+            p2.Eat();
             LivingThings v3 = new Vertibrates();
             Console.WriteLine("\nfrom vertibrate object converted to living things");
-            v3.Test();
+            v3.Eat();
             LivingThings h1 = new Human();
             Console.WriteLine("\nfrom human object converted to living things");
-            h1.Test();
+            h1.Eat();
+
+            Console.WriteLine(l1.ToString());
         }
 
         private static void StaticAndNonStatic()
