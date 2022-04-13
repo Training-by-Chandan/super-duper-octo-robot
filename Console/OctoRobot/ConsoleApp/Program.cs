@@ -22,10 +22,40 @@ namespace Octo.Robot
                 //FunctionsExampleV1();
                 //OperatorOverloading();
                 //StaticAndNonStatic();
-                InheritanceExample();
+                //InheritanceExample();
+                ShapesExample();
+
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void ShapesExample()
+        {
+            Console.WriteLine("Press 1 for Circle, 2 for Rectangle and 3 for Square");
+            var choice = Convert.ToInt32(Console.ReadLine());
+            var shape = ShapeFactory(choice);
+            shape.GetInput();
+            shape.Area();
+            shape.Perimeter();
+        }
+
+        private static IShape ShapeFactory(int i)
+        {
+            switch (i)
+            {
+                case 1:
+                    return new Circle();
+
+                case 2:
+                    return new Rectangle();
+
+                case 3:
+                    return new Triangle();
+
+                default:
+                    return new Square();
+            }
         }
 
         private static void InheritanceExample()
