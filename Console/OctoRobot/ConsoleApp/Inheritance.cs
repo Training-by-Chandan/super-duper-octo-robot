@@ -14,10 +14,20 @@
         {
         }
 
-        public virtual void Test()
+        public virtual void Eat()
+        {
+            System.Console.WriteLine("We can eat");
+        }
+
+        public void Test()
         {
             System.Console.WriteLine("I am from living thing class");
             //Test();
+        }
+
+        public override string ToString()
+        {
+            return "Hello this is living thing object and I have values for living things";
         }
     }
 
@@ -34,9 +44,14 @@
 
         public int AnimalProperty { get; set; }
 
-        public override void Test()
+        public void Test()
         {
             System.Console.WriteLine("I am from animal class");
+        }
+
+        public override void Eat()
+        {
+            System.Console.WriteLine("We eat raw");
         }
     }
 
@@ -45,11 +60,16 @@
         public Plants() : base(1)
         {
         }
+
+        public void Eat()
+        {
+            System.Console.WriteLine("We can do photosynthesis");
+        }
     }
 
     public class Vertibrates : Animal
     {
-        public Vertibrates()
+        public Vertibrates() : base(12)
         {
         }
 
@@ -69,6 +89,11 @@
         public void Test()
         {
             protectedProperty = 20;
+        }
+
+        public override void Eat()
+        {
+            System.Console.WriteLine("we can cook and eat");
         }
     }
 
