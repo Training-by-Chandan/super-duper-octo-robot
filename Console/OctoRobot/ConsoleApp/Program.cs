@@ -38,17 +38,22 @@ namespace Octo.Robot
 
             LivingThings a2 = new Animal();
             Console.WriteLine("\nfrom living thin object");
-            l1.Test();
+            l1.Eat();
             Console.WriteLine("\nfrom animal object");
-            a.Test();
+            a.Eat();
             Console.WriteLine("\nfrom animal object converted to living thing");
-            a2.Test();
+            a2.Eat();
+            LivingThings p2 = new Plants();
+            Console.WriteLine("\nfrom plant object");
+            p2.Eat();
             LivingThings v3 = new Vertibrates();
             Console.WriteLine("\nfrom vertibrate object converted to living things");
-            v3.Test();
+            v3.Eat();
             LivingThings h1 = new Human();
             Console.WriteLine("\nfrom human object converted to living things");
-            h1.Test();
+            h1.Eat();
+
+            Console.WriteLine(l1.ToString());
         }
 
         private static void StaticAndNonStatic()
