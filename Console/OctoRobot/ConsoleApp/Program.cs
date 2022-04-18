@@ -23,11 +23,38 @@ namespace Octo.Robot
                 //OperatorOverloading();
                 //StaticAndNonStatic();
                 //InheritanceExample();
-                ShapesExample();
+                //ShapesExample();
+                AbstractShapesExample();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void AbstractShapesExample()
+        {
+            Console.WriteLine("Press 1 for Rectangle\nany for Square");
+            var choice = Convert.ToInt32(Console.ReadLine());
+            var shape = AbstractShapeFactory(choice);
+            shape.GetInputAndCalculate();
+
+            shape.Area();
+            shape.Perimeter();
+        }
+
+        private static ShapeAbs AbstractShapeFactory(int choice)
+        {
+            switch (choice)
+            {
+                case 1:
+                    return new RectangleAbs();
+
+                case 2:
+                    return new CircleAbs();
+
+                default:
+                    return new SquareAbs();
+            }
         }
 
         private static void ShapesExample()
@@ -131,7 +158,7 @@ namespace Octo.Robot
             final.MathMarks = s1.MathMarks + s2.MathMarks;
 
             //s1++;
-            var finalv2 = s1 + s2 + s1 + s2;
+            var finalv2 = s1 + s2 + s1 + s2 + s1;
             //s1 = 2 + s1 + 2;
 
             //Console.WriteLine(s1 == s1);
