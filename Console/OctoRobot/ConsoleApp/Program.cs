@@ -31,6 +31,16 @@ namespace Octo.Robot
             } while (res.ToUpper() == "Y");
         }
 
+        private static void ExtensionsExample()
+        {
+            var i = 10;
+            string iStr = i.ToString();
+            iStr = "20";
+            i = iStr.ToInt32();
+            double d = 20.452134d;
+            Console.WriteLine(d.ToPercent("%"));
+        }
+
         private static void AbstractShapesExample()
         {
             Console.WriteLine("Press 1 for Rectangle\nany for Square");
