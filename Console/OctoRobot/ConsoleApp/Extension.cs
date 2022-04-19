@@ -14,7 +14,16 @@ namespace Octo.Robot
     {
         public static string ToPercent(this double d, string sign)
         {
-            return d.ToString("00.00") + " " + sign;
+            return d.ToString("00.00") + " %";
+        }
+    }
+
+    public static class TimeExtenstions
+    {
+        public static double Age(this DateTime dt)
+        {
+            var timespan = DateTime.Now - dt;
+            return timespan.TotalDays / 365;
         }
     }
 }
