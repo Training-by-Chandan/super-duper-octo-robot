@@ -8,6 +8,17 @@ namespace Octo.Robot
     {
         private static void Main()
         {
+            bool developerMode = false;
+#if DEBUG
+            developerMode = true;
+#else
+            developerMode = false;
+
+#endif
+            if (developerMode)
+            {
+                Console.WriteLine("Developer mode activated");
+            }
             var res = "N";
             do
             {
@@ -29,6 +40,35 @@ namespace Octo.Robot
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void IndexersExample()
+        {
+            var m = new Months();
+            var d = m[1];
+
+            Library l1 = new Library();
+            var book = l1[2];
+#if STAGE
+            book = l1.GetBookByIndex(1);
+#endif
+            var list = l1["1"];
+        }
+
+        private static void ExtensionsExample()
+        {
+            var i = 10;
+            string iStr = i.ToString();
+            iStr = "20";
+            i = Convert.ToInt32(iStr);
+            i = iStr.ToInt32();
+            double d = 20.452134d;
+            Console.WriteLine(d.ToPercent("%"));
+
+            var d1 = new DateTime(1950, 4, 20);
+
+            var year = TimeExtenstions.Age(d1);
+            year = d1.Age();
         }
 
         private static void AbstractShapesExample()
