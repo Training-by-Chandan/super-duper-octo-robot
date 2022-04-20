@@ -35,11 +35,140 @@ namespace Octo.Robot
                 //StaticAndNonStatic();
                 //InheritanceExample();
                 //ShapesExample();
-                AbstractShapesExample();
+                //AbstractShapesExample();
+                //IndexersExample();
+                //ExtensionsExample();
+                //CustomStackImplementation();
+                //CustomStackV2Example();
+                CustomStackTemplatedV2Example();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void CustomStackTemplatedV2Example()
+        {
+            CustomStackTemplatedV2<string> cs = new CustomStackTemplatedV2<string>();
+
+            Console.WriteLine("After entering a,b,c");
+            cs.Push("a");
+            cs.Push("b");
+            cs.Push("c");
+            cs.DisplayAll();
+
+            Console.WriteLine("after popping 2 times");
+            cs.Pop();
+            cs.Pop();
+            cs.DisplayAll();
+
+            Console.WriteLine("After entering d e f g h i j k l m n o p");
+            cs.Push("d");
+            cs.Push("e");
+            cs.Push("f");
+            //cs.Push("g");
+            //cs.Push("h");
+            //cs.Push("i");
+            //cs.Push("j");
+            //cs.Push("k");
+            //cs.Push("l");
+            //cs.Push("m");
+            //cs.Push("n");
+            //cs.Push("o");
+            //cs.Push("p");
+            cs.DisplayAll();
+
+            Console.WriteLine("after popping 8 times");
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.DisplayAll();
+        }
+
+        private static void CustomStackV2Example()
+        {
+            CustomStackV2 cs = new CustomStackV2();
+
+            Console.WriteLine("After entering a,b,c");
+            cs.Push("a");
+            cs.Push("b");
+            cs.Push("c");
+            cs.DisplayAll();
+
+            Console.WriteLine("after popping 2 times");
+            cs.Pop();
+            cs.Pop();
+            cs.DisplayAll();
+
+            Console.WriteLine("After entering d e f g h i j k l m n o p");
+            cs.Push("d");
+            cs.Push("e");
+            cs.Push("f");
+            //cs.Push("g");
+            //cs.Push("h");
+            //cs.Push("i");
+            //cs.Push("j");
+            //cs.Push("k");
+            //cs.Push("l");
+            //cs.Push("m");
+            //cs.Push("n");
+            //cs.Push("o");
+            //cs.Push("p");
+            cs.DisplayAll();
+
+            Console.WriteLine("after popping 8 times");
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.DisplayAll();
+        }
+
+        private static void CustomStackImplementation()
+        {
+            Console.WriteLine("Enter the size of stack");
+            var size = Console.ReadLine().ToInt32();
+            CustomStack cs = new CustomStack(size);
+
+            cs.Push("a");
+            cs.Push("b");
+            cs.Push("c");
+            Console.WriteLine("After entering a,b,c");
+            cs.DisplayAll();
+
+            cs.Pop();
+            cs.Pop();
+            Console.WriteLine("after popping 2 times");
+            cs.DisplayAll();
+
+            cs.Push("d");
+            cs.Push("e");
+            cs.Push("f");
+            cs.Push("g");
+            cs.Push("h");
+            cs.Push("i");
+            Console.WriteLine("After entering d e f g h i");
+            cs.DisplayAll();
+
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            cs.Pop();
+            Console.WriteLine("after popping 8 times");
+            cs.DisplayAll();
         }
 
         private static void IndexersExample()
