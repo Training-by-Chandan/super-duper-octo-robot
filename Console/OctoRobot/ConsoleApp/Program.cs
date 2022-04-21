@@ -40,11 +40,18 @@ namespace Octo.Robot
                 //ExtensionsExample();
                 //CustomStackImplementation();
                 //CustomStackV2Example();
-                CustomStackTemplatedV2Example();
+                //CustomStackTemplatedV2Example();
+                TemplatesExample();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void TemplatesExample()
+        {
+            var templated = new TemplatedClass<Rectangle, string, Vertibrates>(new Rectangle(), "", );
+            templated.DisplayTypes();
         }
 
         private static void CustomStackTemplatedV2Example()

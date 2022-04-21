@@ -2,6 +2,10 @@
 
 namespace Octo.Robot
 {
+    public interface ITest
+    {
+    }
+
     public interface IArea
     {
         void Area();
@@ -40,7 +44,7 @@ namespace Octo.Robot
         }
     }
 
-    public class Rectangle : IShape
+    public class Rectangle : IShape, ITest
     {
         public double Length { get; set; }
         public double Breadth { get; set; }
