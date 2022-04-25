@@ -41,16 +41,39 @@ namespace Octo.Robot
                 //CustomStackImplementation();
                 //CustomStackV2Example();
                 //CustomStackTemplatedV2Example();
-                TemplatesExample();
+                //TemplatesExample();
+                DelegateExample();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
         }
 
+        private static void DelegateExample()
+        {
+            Delegates d = new Delegates();
+            //d.math = FunctionTestDelegate;
+            //d.math(10, 5);
+            //d.DelegateImplementation();
+            //d.MulticastImplementation();
+            d.OnMathOps += FunctionTestDelegate;
+            d.OnMathOps += FunctionTestDelegate;
+
+            d.MathOpsEvent(10, 20);
+
+            DelegateV2 dv2 = new DelegateV2();
+            dv2.Implementation();
+        }
+
+        private static void FunctionTestDelegate(int a, int b)
+        {
+            Console.WriteLine("This is from program");
+            Console.WriteLine(a + b);
+        }
+
         private static void TemplatesExample()
         {
-            var templated = new TemplatedClass<Rectangle, string, Vertibrates>(new Rectangle(), "", );
+            var templated = new TemplatedClass<Rectangle, string, Vertibrates>(new Rectangle(), "", new Vertibrates());
             templated.DisplayTypes();
         }
 
