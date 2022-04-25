@@ -1,0 +1,169 @@
+﻿Microsoft (R) Visual C# Interactive Compiler version 4.1.0-5.22109.6 ()
+Loading context from 'CSharpInteractive.rsp'.
+Type "#help" for more information.
+> System.Collections.ArrayList ar = new System.Collections.ArrayList();
+> ar.Capacity = 3;
+> ar.Add(1);
+> ar.Add(2);
+> ar.Add(1);
+> ar.Add(2);
+> ar
+ArrayList(4) { 1, 2, 1, 2 }
+> ar.Capacity
+6
+> ar.Add(3);
+> ar.Add(2);
+> ar
+ArrayList(6) { 1, 2, 1, 2, 3, 2 }
+> ar.Capacity
+6
+> ar.Add(1);
+> ar.Capacity
+12
+> ar("1")
+(1,1): error CS1955: Non-invocable member 'ar' cannot be used like a method.
+> ar.Add("1")
+7
+> ar
+ArrayList(8) { 1, 2, 1, 2, 3, 2, 1, "1" }
+> ar[7].GetType()
+[System.String]
+> var d = ar[7];
+> d
+"1"
+> #reset 64
+Resetting execution engine.
+Loading context from 'CSharpInteractive.rsp'.
+> 
+> 
+> System.Collections.SortedList sl = new System.Collections.SortedList();
+> sl.Add(1, "One");
+> sl.Add(1, "Ones");
+System.ArgumentException: Item has already been added. Key in dictionary: '1'  Key being added: '1'
+  + System.Collections.SortedList.Add(object, object)
+> sl
+SortedList(1) { { 1, "One" } }
+> sl.Add(10, "Ten");
+> sl
+SortedList(2) { { 1, "One" }, { 10, "Ten" } }
+> sl.Add(5, "Five");
+> sl
+SortedList(3) { { 1, "One" }, { 5, "Five" }, { 10, "Ten" } }
+> sl.Add("A", "A");
+System.InvalidOperationException: Failed to compare two elements in the array.
+  + System.Array.BinarySearch(System.Array, int, int, object, System.Collections.IComparer)
+  + System.Collections.SortedList.Add(object, object)
+> 
+> 
+> System.Collections.Hashtable ht = new System.Collections.Hashtable();
+> ht.Add('1',"One")
+> ht
+Hashtable(1) { { '1', "One" } }
+> ht.Add('1',"One")
+System.ArgumentException: Item has already been added. Key in dictionary: '1'  Key being added: '1'
+  + System.Collections.Hashtable.Insert(object, object, bool)
+> ht.Add('2',"One")
+> ht
+Hashtable(2) { { '1', "One" }, { '2', "One" } }
+> 
+> 
+> 
+> 
+> List<int> li = new List<int>();
+> li.Add(1);
+> li.Add("abs");
+(1,8): error CS1503: Argument 1: cannot convert from 'string' to 'int'
+> li.Add('A');
+> li
+List<int>(2) { 1, 65 }
+> li.Add(1)
+> li
+List<int>(3) { 1, 65, 1 }
+> li.Insert(1, 22);
+> li
+List<int>(4) { 1, 22, 65, 1 }
+> li.Remove(1)
+true
+> li
+List<int>(3) { 22, 65, 1 }
+> li.Add(0, 1);
+(1,4): error CS1501: No overload for method 'Add' takes 2 arguments
+> li.Insert(0,1)
+> li.Insert(0,1)
+> li
+List<int>(5) { 1, 1, 22, 65, 1 }
+> li.Remove(1)
+true
+> li
+List<int>(4) { 1, 22, 65, 1 }
+> li.Remove(22)
+true
+> li
+List<int>(3) { 1, 65, 1 }
+> li.RemoveAt(2)
+> li
+List<int>(2) { 1, 65 }
+> li.Contains(65)
+true
+> li.Contains(22)
+false
+> li[0]
+1
+> 
+> li.Add('\n')
+> li
+List<int>(3) { 1, 65, 10 }
+> li.Add(' ')
+> li
+List<int>(4) { 1, 65, 10, 32 }
+> li.Add('0')
+> li
+List<int>(5) { 1, 65, 10, 32, 48 }
+> li.Add(true)
+(1,8): error CS1503: Argument 1: cannot convert from 'bool' to 'int'
+> li.Add((int)true)
+(1,8): error CS0030: Cannot convert type 'bool' to 'int'
+> li.Add(Convert.ToInt32(true))
+> li
+List<int>(6) { 1, 65, 10, 32, 48, 1 }
+> li.Remove('\n')
+true
+> li
+List<int>(5) { 1, 65, 32, 48, 1 }
+> 
+> 
+> 
+> Dictionary<int, string> dict = new Dictionary<int, string>();
+> dict.Add(1,"Sunday")
+> dict.Add(2, "Monday");
+> dict.Add(1, "Tuesday");
+System.ArgumentException: An item with the same key has already been added.
+  + System.ThrowHelper.ThrowArgumentException(System.ExceptionResource)
+  + Dictionary<TKey, TValue>.Insert(TKey, TValue, bool)
+> dict.Add(3, "Sunday");
+> dict
+Dictionary<int, string>(3) { { 1, "Sunday" }, { 2, "Monday" }, { 3, "Sunday" } }
+> dict[0]
+System.Collections.Generic.KeyNotFoundException: The given key was not present in the dictionary.
+  + System.ThrowHelper.ThrowKeyNotFoundException()
+  + Dictionary<TKey, TValue>.get_Item(TKey)
+> dict[1]
+"Sunday"
+> dict.ContainsValue("Sunday")
+true
+> dict.ContainsKey(1)
+true
+> dict.ContainsKey(0)
+false
+> 
+> 
+> HashSet<string> hs = new HashSet<string>();
+> hs.Add("Chandan")
+true
+> hs
+HashSet<string>(Count = 1) { "Chandan" }
+> hs.Add("Chandan")
+false
+> hs
+HashSet<string>(Count = 1) { "Chandan" }
+> 

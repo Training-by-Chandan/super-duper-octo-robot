@@ -1,0 +1,32 @@
+﻿> #reset 64
+Resetting execution engine.
+Loading context from 'CSharpInteractive.rsp'.
+> List<string> names = new List<string>() { "Bikash", "Roshan", "Sajal", "Manoj", "Shivaraj", "Dipesh", "Dinesh", "Bishal", "Chandan", "Amrit" };
+> nameof
+(1,1): error CS0103: The name 'nameof' does not exist in the current context
+> names
+List<string>(10) { "Bikash", "Roshan", "Sajal", "Manoj", "Shivaraj", "Dipesh", "Dinesh", "Bishal", "Chandan", "Amrit" }
+> var namesWithB = (from name in names where name.StartsWith("B") select name).ToList();
+> namesWithB
+List<string>(2) { "Bikash", "Bishal" }
+> List<string> months = new List<string>() { "January", "February", "March", "April", "May", "June", "July", "September", "October", "November", "December" };
+> (from month in months select month.Substring(0,3))
+Enumerable.WhereSelectListIterator<string, string> { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Sep", "Oct", "Nov", "Dec" }
+> (from m in months select m.Substring(0,3).ToUpper())
+Enumerable.WhereSelectListIterator<string, string> { "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "SEP", "OCT", "NOV", "DEC" }
+> (from m in months select m.Length).ToList()
+List<int>(11) { 7, 8, 5, 5, 3, 4, 4, 9, 7, 8, 8 }
+> (from m in months where m.EndsWith("ber")).ToList()
+(1,42): error CS0742: A query body must end with a select clause or a group clause
+> (from m in months where m.EndsWith("ber") select m ).ToList()
+List<string>(4) { "September", "October", "November", "December" }
+> months.Where(p => p.EndsWith("ber")).ToList();
+> months.Where(p=>p.EndsWith("ber")).ToList()
+List<string>(4) { "September", "October", "November", "December" }
+> months.Select(p=>p.Substring(0,3)).ToList()
+List<string>(11) { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Sep", "Oct", "Nov", "Dec" }
+> (from m in months orderby m select m).ToList()
+List<string>(11) { "April", "December", "February", "January", "July", "June", "March", "May", "November", "October", "September" }
+> months.OrderBy(p=>p).ToList()
+List<string>(11) { "April", "December", "February", "January", "July", "June", "March", "May", "November", "October", "September" }
+> 
