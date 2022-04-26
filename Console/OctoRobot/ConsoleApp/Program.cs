@@ -42,11 +42,18 @@ namespace Octo.Robot
                 //CustomStackV2Example();
                 //CustomStackTemplatedV2Example();
                 //TemplatesExample();
-                DelegateExample();
+                //DelegateExample();
+                ThreadingExample();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void ThreadingExample()
+        {
+            MultiThreading mt = new MultiThreading();
+            mt.TasksExample();
         }
 
         private static void DelegateExample()
