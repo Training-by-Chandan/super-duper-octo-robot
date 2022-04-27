@@ -43,7 +43,8 @@ namespace Octo.Robot
                 //CustomStackTemplatedV2Example();
                 //TemplatesExample();
                 //DelegateExample();
-                ThreadingExample();
+                //ThreadingExample();
+                ExceptionsHalding.Run();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
@@ -52,8 +53,22 @@ namespace Octo.Robot
 
         private static void ThreadingExample()
         {
-            MultiThreading mt = new MultiThreading();
-            mt.TasksExample();
+            int[] arr = new int[1];
+            try
+            {
+                arr[0] = 3;
+                MultiThreading mt = new MultiThreading();
+                mt.TasksExample();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Running finally");
+                Array.Clear(arr);
+            }
         }
 
         private static void DelegateExample()

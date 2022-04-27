@@ -20,8 +20,9 @@ namespace Octo.Robot
             //Task t2 = new Task(FunctionTwo);
             //t1.Start();
             //t2.Start();
-            var tokenSource = new CancellationTokenSource();
 
+            var tokenSource = new CancellationTokenSource();
+            ExceptionFunction();
             var res = TaskOne(15, "Task One", 500);
             var res2 = TaskOne(20, "Task Two", 750);
             var res3 = TaskOne(10, "Task Three", 600);
@@ -44,6 +45,13 @@ namespace Octo.Robot
                 Thread.Sleep(1000);
             }
             return 1;
+        }
+
+        public static void ExceptionFunction()
+        {
+            System.Diagnostics.StackTrace s = new System.Diagnostics.StackTrace();
+            Console.WriteLine(s.ToString());
+            throw new Exception("Throwing this intentionally");
         }
 
         public void FunctionTwo()
