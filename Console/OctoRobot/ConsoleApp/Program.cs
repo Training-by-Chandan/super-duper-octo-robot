@@ -44,11 +44,32 @@ namespace Octo.Robot
                 //TemplatesExample();
                 //DelegateExample();
                 //ThreadingExample();
-                ExceptionsHalding.Run();
+                //ExceptionsHalding.Run();
+                //FileHandle();
+                EnumsExample();
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+        private static void EnumsExample()
+        {
+            Console.WriteLine((int)Days.Sunday);
+            Console.WriteLine((int)Days.Monday);
+            Console.WriteLine((int)Days.Tuesday);
+            Console.WriteLine((int)Days.Wednesday);
+            Console.WriteLine((int)Days.Thursday);
+            Console.WriteLine((int)Days.Friday);
+            Console.WriteLine((int)Days.Saturday);
+            var day = (Days)30;
+            Console.WriteLine(day);
+        }
+
+        private static void FileHandle()
+        {
+            FileHandling fh = new FileHandling();
+            fh.Run();
         }
 
         private static void ThreadingExample()

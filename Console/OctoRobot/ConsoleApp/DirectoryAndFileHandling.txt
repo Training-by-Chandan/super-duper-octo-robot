@@ -1,0 +1,130 @@
+﻿> #reset 64
+Resetting execution engine.
+Loading context from 'CSharpInteractive.rsp'.
+> using System.IO;
+> var directory = "test";
+> var fullpath = Path.GetFullPath(directory);
+> Directory.Exists(directory)
+false
+> Directory.Exists("runtimes")
+false
+> Directory.Exists(fullpath)
+false
+> fullpath = Path.GetFullPath("runtimes");
+> fullpath
+"C:\\Users\\Chand\\runtimes"
+> fullpath = Path.GetFullPath("donwloads");
+> fullpath
+"C:\\Users\\Chand\\donwloads"
+> fullpath = Path.GetFullPath("downloads");
+> fullpath
+"C:\\Users\\Chand\\downloads"
+> Directory.Exists(fullpath)
+true
+> Directory.Exists("downloads")
+true
+> Directory.Exists("\downloads")
+(1,19): error CS1009: Unrecognized escape sequence
+> Directory.Exists("\\downloads")
+false
+> Path.GetFullPath("\\downloads")
+"C:\\downloads"
+> Directory.Exists("\\users")
+true
+> Directory.CreateDirectory("Test")
+[Test]
+> Directory.Delete("Test")
+> Directory.CreateDirectory("Test")
+[Test]
+> Directory.GetDirectories("Test")
+string[4] { "Test\\New folder", "Test\\New folder - Copy", "Test\\New folder - Copy (2)", "Test\\New folder - Copy (3)" }
+> Directory.GetFiles("Test")
+string[5] { "Test\\New Text Document - Copy (2).txt", "Test\\New Text Document - Copy (3).txt", "Test\\New Text Document - Copy (4).txt", "Test\\New Text Document - Copy.txt", "Test\\New Text Document.txt" }
+> Directory.GetFiles("Test")
+string[5] { "Test\\a.txt", "Test\\b.txt", "Test\\c.txt", "Test\\d.txt", "Test\\e.txt" }
+> Directory.GetCurrentDirectory()
+"C:\\Users\\Chand"
+> DirectoryInfo di = new DirectoryInfo("Test");
+> di.Root
+[C:\]
+> di.Extension
+""
+> di.Name
+"Test"
+> di.Attributes
+Directory
+> di.CreationTime
+[28/04/2022 07:12:59]
+> di.Parent
+[Chand]
+> 
+> 
+> 
+> 
+> 
+> FileInfo fi = new FileInfo(Directory.GetFiles("Test")[0]);
+> fi.Extension
+".txt"
+> fi.CreationTime
+[28/04/2022 07:13:57]
+> fi.Attributes
+Archive
+> fi.Directory
+[C:\Users\Chand\Test]
+> fi.Length
+240
+> fi.Name
+"a.txt"
+> fi.Length
+240
+> FileInfo fi = new FileInfo(Directory.GetFiles("Test")[0]);
+> fi.Length
+1290
+> fi.Attributes
+Archive
+> File.ReadAllText(Directory.GetFiles("Test")[0])
+"ashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdf"
+> File.ReadAllText(Directory.GetFiles("Test")[0])
+"ashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsa\r\nfdh\r\nasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfa\r\nshdfsafdhasdfashdfsafdhasdf\r\nashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsa\r\nfdhasdfashdfsafdhasdfashdfs\r\n\r\nafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasd\r\nfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfs\r\nafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasd\r\nfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfs\r\nafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdf"
+> File.ReadLines(Directory.GetFiles("Test")[0])
+ReadLinesIterator { "ashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsa", "fdh", "asdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfa", "shdfsafdhasdfashdfsafdhasdf", "ashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsa", "fdhasdfashdfsafdhasdfashdfs", "", "afdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasd", "fashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfs", "afdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasd", "fashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfs", "afdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdfashdfsafdhasdf" }
+> File.WriteAllText(Directory.GetFiles("Test")[0],"Hello all!")
+> File.AppendAllText(Directory.GetFiles("Test")[0], "Hello all!")
+> File.Delete("Test\\a.txt")
+> fi = new FileInfo(Directory.GetFiles("Test")[0]);
+> fi.Name
+"b.txt"
+> fi.Encrypt()
+> var sec = new System.Security.AccessControl.FileSecurity()
+.     ;
+> sec.SetAccessRuleProtection(true, true);
+> sec.SetAccessRuleProtection(false, false);
+> File.Copy("Test\\c.txt","Test\\c-copy.txt")
+> File.Move("Test\\c.txt", "c-copy.txt")
+> File.Delete("c-copy.txt")
+> Directory.Delete("Test")
+System.IO.IOException: The directory is not empty.
+
+  + System.IO.__Error.WinIOError(int, string)
+  + System.IO.Directory.DeleteHelper(string, string, bool, bool, ref Microsoft.Win32.Win32Native.WIN32_FIND_DATA)
+  + System.IO.Directory.Delete(string, string, bool, bool)
+> Directory.Delete("Test",true)
+> File.Copy("Downloads\\tv.jpg","Test\\a.jpg")
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'Test\a.jpg'.
+  + System.IO.__Error.WinIOError(int, string)
+  + System.IO.File.InternalCopy(string, string, bool, bool)
+> File.Copy("Downloads\\tv.jpg", "Test\\a.jpg",true)
+System.IO.DirectoryNotFoundException: Could not find a part of the path 'Test\a.jpg'.
+  + System.IO.__Error.WinIOError(int, string)
+  + System.IO.File.InternalCopy(string, string, bool, bool)
+> if (!Directory.Exists("Test"))
+. {
+.     Directory.CreateDirectory("Test");
+. }
+> File.Copy("Downloads\\tv.jpg", "Test\\a.jpg", true)
+> File.Copy("Downloads\\download.jpg", "Test\\a.jpg")
+System.IO.IOException: The file 'Test\a.jpg' already exists.
+  + System.IO.__Error.WinIOError(int, string)
+  + System.IO.File.InternalCopy(string, string, bool, bool)
+> File.Copy("Downloads\\download.jpg", "Test\\a.jpg",true)
+> 
