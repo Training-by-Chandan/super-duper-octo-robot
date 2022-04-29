@@ -46,11 +46,40 @@ namespace Octo.Robot
                 //ThreadingExample();
                 //ExceptionsHalding.Run();
                 //FileHandle();
-                EnumsExample();
+                //EnumsExample();
+                //ReflectionExample();
+
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
+        }
+
+
+        private static void ReflectionExample()
+        {
+            var assembly = System.Reflection.Assembly.GetExecutingAssembly();
+            Console.WriteLine("Enter the type name");
+            var input = Console.ReadLine();
+            var obj = assembly.CreateInstance(input);
+
+            var t = assembly.GetType(input);
+            foreach (var item in t.GetProperties())
+            {
+                Console.WriteLine($"Property Name : {item.Name}\t Property Type : {item.PropertyType.Name}\t IsPublic : {item.PropertyType.IsPublic}");
+            }
+            Console.WriteLine("===============================");
+            foreach (var item in t.GetMethods())
+            {
+                Console.WriteLine($"Method Name : {item.Name}\t Return Type : {item.ReturnType}");
+            }
+            Console.WriteLine("===============================");
+            foreach (var item in t.GetCustomAttributes(false))
+            {
+                //todo by yourself
+            }
+
+            Console.WriteLine("Type of object created is " + obj.GetType());
         }
 
         private static void EnumsExample()

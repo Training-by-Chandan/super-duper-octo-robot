@@ -1,13 +1,21 @@
-﻿using System.Linq;
+﻿using System.ComponentModel.DataAnnotations;
+using System.Linq;
 
 namespace Octo.Robot
 {
+    [Sys("Test")]
     public class StudentInfo
     {
         public const int a1 = 53;
         public readonly int a2 = 2;
         private int a4 = 3;
         public int a3 { get => a4; }
+
+        public StudentInfo(StudentInfo studentInfo)
+        {
+            this.scienceMarks = studentInfo.scienceMarks;
+            //this = studentInfo;//not valid
+        }
 
         public StudentInfo()
         {
@@ -25,9 +33,12 @@ namespace Octo.Robot
 
         #region Properties
 
+        [Sys("Test")]
         public string FirstName { get; set; }
+
         public string MiddleName { get; set; }
         public string LastName { get; set; }
+        private string Testing { get; set; }
 
         public string GetFullName()
         {
