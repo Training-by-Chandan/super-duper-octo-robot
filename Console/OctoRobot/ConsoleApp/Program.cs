@@ -46,15 +46,13 @@ namespace Octo.Robot
                 //ThreadingExample();
                 //ExceptionsHalding.Run();
                 //FileHandle();
-                //EnumsExample();
+                EnumsExample();
                 //ReflectionExample();
-
 
                 Console.WriteLine("Do you want to continue more? (Y/N)");
                 res = Console.ReadLine();
             } while (res.ToUpper() == "Y");
         }
-
 
         private static void ReflectionExample()
         {
@@ -84,15 +82,21 @@ namespace Octo.Robot
 
         private static void EnumsExample()
         {
-            Console.WriteLine((int)Days.Sunday);
-            Console.WriteLine((int)Days.Monday);
-            Console.WriteLine((int)Days.Tuesday);
-            Console.WriteLine((int)Days.Wednesday);
-            Console.WriteLine((int)Days.Thursday);
-            Console.WriteLine((int)Days.Friday);
-            Console.WriteLine((int)Days.Saturday);
-            var day = (Days)30;
-            Console.WriteLine(day);
+            foreach (var item in Enum.GetValues(typeof(Days)))
+            {
+                Console.WriteLine(Convert.ToInt32(((int)item).ToString(), 8));
+                Console.WriteLine($"{item} => {(int)item}");
+            }
+
+            //Console.WriteLine((int)Days.Sunday);
+            //Console.WriteLine((int)Days.Monday);
+            //Console.WriteLine((int)Days.Tuesday);
+            //Console.WriteLine((int)Days.Wednesday);
+            //Console.WriteLine((int)Days.Thursday);
+            //Console.WriteLine((int)Days.Friday);
+            //Console.WriteLine((int)Days.Saturday);
+            //var day = (Days)30;
+            //Console.WriteLine(day);
         }
 
         private static void FileHandle()
@@ -128,6 +132,7 @@ namespace Octo.Robot
             //d.math(10, 5);
             //d.DelegateImplementation();
             //d.MulticastImplementation();
+
             d.OnMathOps += FunctionTestDelegate;
             d.OnMathOps += FunctionTestDelegate;
 
