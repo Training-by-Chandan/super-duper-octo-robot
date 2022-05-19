@@ -11,7 +11,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Icon1.ico = Icon1.ico
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.Data", "ConsoleApp.Data\ConsoleApp.Data.csproj", "{7E53A225-E758-49B5-A5B9-EFAE261A26D1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp.Data", "ConsoleApp.Data\ConsoleApp.Data.csproj", "{7E53A225-E758-49B5-A5B9-EFAE261A26D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.EFDemo", "ConsoleApp.EFDemo\ConsoleApp.EFDemo.csproj", "{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -32,6 +34,12 @@ Global
 		{7E53A225-E758-49B5-A5B9-EFAE261A26D1}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7E53A225-E758-49B5-A5B9-EFAE261A26D1}.Stage|Any CPU.ActiveCfg = Debug|Any CPU
 		{7E53A225-E758-49B5-A5B9-EFAE261A26D1}.Stage|Any CPU.Build.0 = Debug|Any CPU
+		{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}.Stage|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9142522-CF9C-4E2C-8FD3-A0441F7C13CD}.Stage|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
