@@ -4,8 +4,8 @@ using ConsoleApp.CodeFirst;
 using ConsoleApp.CodeFirst.Models;
 using ConsoleApp.CodeFirst.Services;
 
-DefaultContext db = new DefaultContext();
-db.Database.EnsureCreated();
+//DefaultContext db = new DefaultContext();
+//db.Database.EnsureCreated();
 
 var res = "n";
 do

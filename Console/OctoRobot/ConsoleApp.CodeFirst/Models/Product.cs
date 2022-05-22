@@ -20,10 +20,10 @@ namespace ConsoleApp.CodeFirst.Models
         [StringLength(100)]
         public string? Description { get; set; }
 
-        public int? CategoryId { get; set; }
+        public Nullable<int> CategoryId { get; set; }
 
         [ForeignKey("CategoryId")]
-        public virtual Category Category { get; set; }
+        public virtual Category? Category { get; set; }
     }
 
     [Table("CategoryTbl")]

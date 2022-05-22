@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp.Data", "ConsoleApp.Data\ConsoleApp.Data.csproj", "{7E53A225-E758-49B5-A5B9-EFAE261A26D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp.CodeFirst", "ConsoleApp.CodeFirst\ConsoleApp.CodeFirst.csproj", "{76D3B9D2-D664-4E2C-A4FA-ABEE12252288}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp.CodeFirst", "ConsoleApp.CodeFirst\ConsoleApp.CodeFirst.csproj", "{76D3B9D2-D664-4E2C-A4FA-ABEE12252288}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
