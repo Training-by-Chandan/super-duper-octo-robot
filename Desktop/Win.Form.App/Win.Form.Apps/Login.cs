@@ -1,4 +1,6 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
+using System.Windows.Forms;
 using Win.Forms.Apps.Services;
 
 namespace Win.Forms.Apps
@@ -23,6 +25,9 @@ namespace Win.Forms.Apps
             if (res.Item1)
             {
                 //navigate to a new form
+                MainFrm main = new MainFrm();
+                main.Show();
+                this.Hide();
             }
             else
             {
