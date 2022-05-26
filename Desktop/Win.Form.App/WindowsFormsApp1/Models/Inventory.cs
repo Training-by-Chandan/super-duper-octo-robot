@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WindowsFormsApp.Models
 {
@@ -14,5 +15,6 @@ namespace WindowsFormsApp.Models
         public double Stock { get; set; }
         public double Price { get; set; }
         public string Description { get; set; }
+        public DateTime DateOfPurchase { get; set; }
     }
 }
