@@ -1,17 +1,20 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using WindowsFormsApp.Db;
-using WindowsFormsApp.Models;
+using WindowsFormsApp.Repository;
+using WindowsFormsApp.Viewmodel;
 
 namespace WindowsFormsApp.Services
 {
     public class CategoryServices
     {
-        private DefaultDbContext db = new DefaultDbContext();
-
-        public List<Category> GetAll()
+        private CategoryRepository category = new CategoryRepository();
+        public List<CategoryDDViewModel> GetCategoryDropDowns()
         {
-            return db.Categories.ToList();
+            return category.GetAll().Select(p => new CategoryDDViewModel()
+            {
+                Id = p.Id,
+                Name = p.Name
+            }).ToList();
         }
     }
 }

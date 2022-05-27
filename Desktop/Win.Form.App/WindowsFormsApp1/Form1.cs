@@ -8,14 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp.Models;
+using WindowsFormsApp.Repository;
 using WindowsFormsApp.Services;
+using WindowsFormsApp.Viewmodel;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
-        private InventoryServices inventory = new InventoryServices();
-        private CategoryServices category = new CategoryServices();
+        private CategoryServices categoryServices = new CategoryServices();
+        private InventoryServices inventoryServices = new InventoryServices();
 
         public Form1()
         {
@@ -30,7 +32,7 @@ namespace WindowsFormsApp1
 
         private void LoadData()
         {
-            grdInventory.DataSource = inventory.GetAll();
+            grdInventory.DataSource = inventoryServices.GetAll();
             grdInventory.Refresh();
         }
 
@@ -41,7 +43,7 @@ namespace WindowsFormsApp1
 
         private void btnCreate_Click(object sender, EventArgs e)
         {
-            var obj = new Inventory()
+            var obj = new InventoryCreateEditViewModel()
             {
                 Name = txtName.Text,
                 CategoryId = Convert.ToInt32(cmbCategory.SelectedValue),
@@ -51,7 +53,7 @@ namespace WindowsFormsApp1
                 Stock = Convert.ToDouble(txtStock.Text)
             };
 
-            var res = inventory.Create(obj);
+            var res = inventoryServices.Create(obj);
             if (res.Item1)
             {
                 //show the message
@@ -89,8 +91,8 @@ namespace WindowsFormsApp1
 
         private void LoadCategory()
         {
-            var list = category.GetAll();
-            list.Insert(0, new Category() { Id = 0, Name = "Select Category" });
+            var list = categoryServices.GetCategoryDropDowns();
+            list.Insert(0, new CategoryDDViewModel() { Id = 0, Name = "Select Category" });
             cmbCategory.DataSource = new BindingSource(list, null);
             cmbCategory.DisplayMember = "Name";
             cmbCategory.ValueMember = "Id";
@@ -130,7 +132,7 @@ namespace WindowsFormsApp1
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            var res = inventory.Delete(Convert.ToInt32(lblId.Text));
+            var res = inventoryServices.Delete(Convert.ToInt32(lblId.Text));
             if (res.Item1)
             {
                 //show the message
@@ -145,7 +147,7 @@ namespace WindowsFormsApp1
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            var obj = new Inventory()
+            var obj = new InventoryCreateEditViewModel()
             {
                 Id = Convert.ToInt32(lblId.Text),
                 Name = txtName.Text,
@@ -156,7 +158,7 @@ namespace WindowsFormsApp1
                 Stock = Convert.ToDouble(txtStock.Text)
             };
 
-            var res = inventory.Edit(obj);
+            var res = inventoryServices.Edit(obj);
             if (res.Item1)
             {
                 //show the message

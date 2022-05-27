@@ -28,6 +28,22 @@
                 db.UserInfos.Add(normalUser);
                 db.SaveChanges();
             }
+
+            if (!db.Categories.Any(p => p.Name == "Electronics"))
+            {
+                db.Categories.Add(new Category() { Name = "Electronics" });
+                db.SaveChanges();
+            }
+            if (!db.Categories.Any(p => p.Name == "Groceries"))
+            {
+                db.Categories.Add(new Category() { Name = "Groceries" });
+                db.SaveChanges();
+            }
+            if (!db.Categories.Any(p => p.Name == "Fashion"))
+            {
+                db.Categories.Add(new Category() { Name = "Fashion" });
+                db.SaveChanges();
+            }
         }
     }
 }

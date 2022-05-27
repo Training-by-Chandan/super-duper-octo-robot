@@ -3,32 +3,62 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using WindowsFormsApp.Db;
 using WindowsFormsApp.Models;
+using WindowsFormsApp.Repository;
+using WindowsFormsApp.Viewmodel;
 
 namespace WindowsFormsApp.Services
 {
     public class InventoryServices
     {
-        private DefaultDbContext db = new DefaultDbContext();
+        public InventoryRepository iventory = new InventoryRepository();
 
-        public List<Inventory> GetAll()
+        public List<InventoryListViewModel> GetAll()
         {
-            return db.Inventories.ToList();
+            var data = iventory.GetAll();
+            var res = data.Select(p => new InventoryListViewModel
+            {
+                Id = p.Id,
+                CategoryName = p.Category == null ? "" : p.Category.Name,
+                Name = p.Name,
+                Description = p.Description,
+                DateOfPurchase = p.DateOfPurchase,
+                Price = p.Price,
+                Stock = p.Stock
+            }).ToList();
+            return res;
         }
 
-        public Inventory GetById(int id)
+        public InventoryListViewModel GetByID(int Id)
         {
-            return db.Inventories.Find(id);
+            var data = iventory.GetById(Id);
+            var res = new InventoryListViewModel
+            {
+                Id = data.Id,
+                CategoryName = data.Category == null ? "" : data.Category.Name,
+                Name = data.Name,
+                Description = data.Description,
+                DateOfPurchase = data.DateOfPurchase,
+                Price = data.Price,
+                Stock = data.Stock
+            };
+            return res;
         }
 
-        public (bool, string) Create(Inventory model)
+        public (bool, string) Create(InventoryCreateEditViewModel model)
         {
             try
             {
-                db.Inventories.Add(model);
-                db.SaveChanges();
-                return (true, "Added Successfully");
+                var invModel = new Inventory()
+                {
+                    CategoryId = model.CategoryId,
+                    DateOfPurchase = model.DateOfPurchase,
+                    Description = model.Description,
+                    Name = model.Name,
+                    Price = model.Price,
+                    Stock = model.Stock
+                };
+                return iventory.Create(invModel);
             }
             catch (Exception ex)
             {
@@ -36,24 +66,21 @@ namespace WindowsFormsApp.Services
             }
         }
 
-        public (bool, string) Edit(Inventory model)
+        public (bool, string) Edit(InventoryCreateEditViewModel model)
         {
             try
             {
-                var exising = db.Inventories.Find(model.Id);
-                if (exising == null) return (false, "Not found");
-
-                exising.Description = model.Description;
-                exising.Name = model.Name;
-                exising.Price = model.Price;
-                exising.CategoryId = model.CategoryId;
-                exising.DateOfPurchase = model.DateOfPurchase;
-                exising.Stock = model.Stock;
-
-                db.Entry(exising).State = System.Data.Entity.EntityState.Modified;
-
-                db.SaveChanges();
-                return (true, "updated Successfully");
+                var invModel = new Inventory()
+                {
+                    CategoryId = model.CategoryId,
+                    DateOfPurchase = model.DateOfPurchase,
+                    Description = model.Description,
+                    Name = model.Name,
+                    Price = model.Price,
+                    Stock = model.Stock,
+                    Id = model.Id
+                };
+                return iventory.Edit(invModel);
             }
             catch (Exception ex)
             {
@@ -61,21 +88,9 @@ namespace WindowsFormsApp.Services
             }
         }
 
-        public (bool, string) Delete(int id)
+        public (bool, string) Delete(int Id)
         {
-            try
-            {
-                var exising = db.Inventories.Find(id);
-                if (exising == null) return (false, "Not found");
-
-                db.Inventories.Remove(exising);
-                db.SaveChanges();
-                return (true, "deleted Successfully");
-            }
-            catch (Exception ex)
-            {
-                return (false, ex.Message);
-            }
+            return iventory.Delete(Id);
         }
     }
 }

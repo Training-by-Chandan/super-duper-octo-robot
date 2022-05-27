@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using WindowsFormsApp.Db;
 
-namespace WindowsFormsApp.Services
+namespace WindowsFormsApp.Repository
 {
-    public class UserServices
+    public class UserRepository
     {
         private DefaultDbContext db = new DefaultDbContext();
 
