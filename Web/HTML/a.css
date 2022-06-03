@@ -1,0 +1,10 @@
+.blue{
+    background-color: blue;
+}
+ 
+a {
+    color:red ;
+}
+a :hover{
+    opacity: 0.3;
+}
