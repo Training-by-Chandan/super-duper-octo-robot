@@ -16,7 +16,8 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var data = GenerateDataForHomeIndex();
+            return View(data);
         }
 
         public IActionResult Privacy()
@@ -42,6 +43,20 @@ namespace WebApp.Controllers
                 new StudentViewModel(){ Id=1,  Name="Bikrant", Email="bikrant@gmail.com"},
                 new StudentViewModel(){ Id=2,  Name="Bishal", Email="bishal@gmail.com"},
                 new StudentViewModel(){ Id=3,  Name="Shivraj", Email="shivraj@gmail.com"},
+            };
+        }
+
+        private static HomeIndexViewModel GenerateDataForHomeIndex()
+        {
+            return new HomeIndexViewModel()
+            {
+                Boxes = new List<BoxInfoViewModel>()
+                {
+                    new BoxInfoViewModel(){ Number="160", Title="New Orders", BoxIcon= "ion-bag", BoxType="bg-info"},
+                     new BoxInfoViewModel(){ Number="83%", Title="Bounce Rate", BoxIcon= "ion-stats-bars", BoxType="bg-success"},
+                      new BoxInfoViewModel(){ Number="44", Title="User Registrations", BoxIcon= "ion-person-add", BoxType="bg-warning"},
+                       new BoxInfoViewModel(){ Number="65", Title="Unique Visitors", BoxIcon= "ion-pie-graph", BoxType="bg-danger"},
+                }
             };
         }
     }

@@ -1,10 +1,15 @@
-﻿@{
+﻿@model WebApp.ViewModels.HomeIndexViewModel
+@{
     ViewData["Title"] = "Home ";
 }
+<div class="row">
 
-@for (int i = 0; i < 10; i++)
-{
-    <div class="text-center">
-        <h1 class="display-4">Welcome to ASP.NET Core</h1>
+    @foreach (var item in Model.Boxes)
+    {
+   @Html.Partial("Partial/_BoxInfoPartial", item)
+        
+    }
+
+
+
 </div>
-}
