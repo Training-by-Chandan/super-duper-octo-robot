@@ -3,13 +3,12 @@
     ViewData["Title"] = "Home ";
 }
 <div class="row">
-
     @foreach (var item in Model.Boxes)
     {
    @Html.Partial("Partial/_BoxInfoPartial", item)
         
     }
-
-
-
 </div>
+    @section header{
+        <h1>Main Info</h1>
+    }

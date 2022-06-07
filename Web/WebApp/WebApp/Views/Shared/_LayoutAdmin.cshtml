@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿      @{
+          IgnoreSection("header");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
@@ -849,7 +852,7 @@
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-
+      @*@RenderSection("header", required:false)*@
     <!-- Main content -->
     <section class="content">
       <div class="container-fluid">

@@ -8,7 +8,7 @@ namespace WebApp.Data
     {
         public DbSet<Student> Student { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-
+        public DbSet<Class> Classes { get; set; }
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
