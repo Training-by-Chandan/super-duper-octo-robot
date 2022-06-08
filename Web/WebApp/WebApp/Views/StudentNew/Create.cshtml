@@ -1,0 +1,46 @@
+﻿@model Student
+
+<div class="row">
+    <div class="col-md-12">
+        <div asp-validation-summary=All class="text-danger"></div>
+        <form method="post" asp-action="Create" asp-controller="StudentNew">
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-name"></label>
+                <input type="text" asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+
+            </div>
+             <div class="form-group">
+                <label asp-for="LastName" class="control-name"></label>
+                <input type="text" asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+
+            </div>
+             <div class="form-group">
+                <label asp-for="Email" class="control-name"></label>
+                <input type="email" asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+
+            </div>
+             <div class="form-group">
+                <label asp-for="Phone" class="control-name"></label>
+                <input type="text" asp-for="Phone" class="form-control" />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="ClassId" class="control-name"></label>
+               <select asp-for="ClassId" class="form-control">
+                   <option value="1">One</option>
+                   <option value="2">Two</option>
+               </select>
+                <span asp-validation-for="ClassId" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+              @*  <input type="submit" class="btn btn-primary" value="Create" />*@
+               <button type="submit" class="btn btn-primary">Create</button>
+            </div>
+        </form>
+    </div>
+</div>

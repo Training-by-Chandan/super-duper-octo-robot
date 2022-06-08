@@ -1,5 +1,9 @@
 ﻿@model IQueryable<Student>
 
+<div class="row">
+    <a asp-action="create" asp-controller="studentnew" class="btn btn-outline-primary">Create new Student</a>
+</div>
+<div class="row">
 
     <table class="table">
         <thead>
@@ -11,23 +15,24 @@
             </tr>
         </thead>
         <tbody>
-        @{
-            int i = 1;
-        }
-        @foreach (var item in Model)
-        {
-            string cls = item.Classes == null ? "" : item.Classes.Name;
+            @{
+                int i = 1;
+            }
+            @foreach (var item in Model)
+            {
+                string cls = item.Classes == null ? "" : item.Classes.Name;
 
-            <tr>
-                <td>@i</td>
-                <td>@item.FirstName @item.LastName</td>
-                <td>@item.Email</td>
-                <td> @cls </td>
+                <tr>
+                    <td>@i</td>
+                    <td>@item.FirstName @item.LastName</td>
+                    <td>@item.Email</td>
+                    <td> @cls </td>
 
-            </tr>
-            
+                </tr>
+
                 i++;
-            
-        }
-</tbody>
+
+            }
+        </tbody>
     </table>
+</div>

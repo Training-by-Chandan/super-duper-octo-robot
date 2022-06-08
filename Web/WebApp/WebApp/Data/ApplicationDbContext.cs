@@ -13,5 +13,12 @@ namespace WebApp.Data
             : base(options)
         {
         }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Student>(entity => {
+                entity.HasIndex(e => e.Email).IsUnique();
+            });
+        }
     }
 }
