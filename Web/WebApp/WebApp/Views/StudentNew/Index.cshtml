@@ -12,6 +12,7 @@
                 <th>Full Name</th>
                 <th>Email</th>
                 <th>Class Name</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
@@ -27,7 +28,15 @@
                     <td>@item.FirstName @item.LastName</td>
                     <td>@item.Email</td>
                     <td> @cls </td>
-
+                    <td>
+                        <a asp-action="edit" asp-controller="studentnew" asp-route-id="@item.Id">
+                            <i class="fa fa-pen"></i>
+                        </a>
+                        |
+                         <a asp-action="delete" asp-controller="studentnew" asp-route-id="@item.Id">
+                            <i class="fa fa-trash"></i>
+                        </a>
+                    </td>
                 </tr>
 
                 i++;

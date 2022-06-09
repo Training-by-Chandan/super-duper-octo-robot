@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Linq;
 using WebApp.Data;
 using WebApp.Models;
 
@@ -36,7 +37,7 @@ namespace WebApp.Controllers
                 {
                     //check if there is dupicate record
                     var existing = db.Student.FirstOrDefault(p => p.FirstName == model.FirstName && p.LastName == model.LastName && p.Email == model.Email && p.Phone == model.Phone);
-                    
+
                     if (existing == null)
                     {
                         //create
@@ -58,6 +59,89 @@ namespace WebApp.Controllers
                 }
             }
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var existing = db.Student.Find(id);
+            if (existing == null)
+            {
+                ViewBag.message = "Record not found";
+            }
+            return View(existing);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Student model)
+        {
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    //check if there is dupicate record
+                    var existing = db.Student.Find(model.Id);
+
+                    if (existing == null)
+                    {
+                        ViewBag.message = "Record not found";
+                        return View();
+                    }
+                    else
+                    {
+                        existing.FirstName = model.FirstName;
+                        existing.LastName = model.LastName;
+                        existing.Phone = model.Phone;
+                        existing.Email = model.Email;
+                        existing.ClassId = model.ClassId;
+                        db.Student.Update(existing);
+                        db.SaveChanges();
+                        return RedirectToAction("Index");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    return View(model);
+                }
+            }
+            return View(model);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var existing = db.Student.Find(id);
+            if (existing == null)
+            {
+                ViewBag.message = "Record not found";
+            }
+            return View(existing);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(Student model)
+        {
+            try
+            {
+                //check if there is existing record
+                var existing = db.Student.Find(model.Id);
+
+                if (existing == null)
+                {
+                    ViewBag.message = "Record not found";
+                    return View();
+                }
+                else
+                {
+                    db.Student.Remove(existing);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index");
+            }
         }
     }
 }

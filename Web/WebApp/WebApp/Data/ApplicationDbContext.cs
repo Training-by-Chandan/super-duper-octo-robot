@@ -14,11 +14,11 @@ namespace WebApp.Data
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<Student>(entity => {
-                entity.HasIndex(e => e.Email).IsUnique();
-            });
-        }
+        //protected override void OnModelCreating(ModelBuilder builder)
+        //{
+        //    builder.Entity<Student>(entity => {
+        //        entity.HasIndex(e => e.Email).IsUnique();
+        //    });
+        //}
     }
 }
