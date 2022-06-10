@@ -1,5 +1,16 @@
 ﻿@model Student
-
+@{
+    var final = TempData[Consts.TempDataVal.Final] as string;
+    final = final == null ? "" : final;
+}
+@if(!string.IsNullOrWhiteSpace(final))
+{
+    <div class="row">
+        <span class="alert alert-success">
+            @final
+        </span>
+    </div>
+}
 <div class="row">
     <div class="col-md-12">
         <div asp-validation-summary=All class="text-danger"></div>
@@ -30,10 +41,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="ClassId" class="control-name"></label>
-               <select asp-for="ClassId" class="form-control">
+                @{
+                    var list = ViewData[Consts.ViewDataVal.ClassList] as SelectList;
+                }
+               <select asp-for="ClassId" class="form-control" asp-items="@list"></select>
+                
+            @*    <select asp-for="ClassId" class="form-control">
                    <option value="1">One</option>
                    <option value="2">Two</option>
-               </select>
+               </select>*@
                 <span asp-validation-for="ClassId" class="text-danger"></span>
 
             </div>

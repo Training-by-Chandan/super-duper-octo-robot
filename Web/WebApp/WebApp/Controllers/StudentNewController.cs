@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
 using WebApp.Data;
@@ -14,6 +15,11 @@ namespace WebApp.Controllers
         {
             this.db = db;
         }
+        [HttpGet]
+        public IActionResult Test()
+        {
+            return RedirectToAction("Index");
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -25,12 +31,15 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult Create()
         {
+            ViewData[Consts.ViewDataVal.ClassList] = new SelectList(db.Classes, "Id", "Name");
             return View();
         }
 
         [HttpPost]
+
         public IActionResult Create(Student model)
         {
+            ViewData[Consts.ViewDataVal.ClassList] = new SelectList(db.Classes, "Id", "Name");
             if (ModelState.IsValid)
             {
                 try
@@ -44,21 +53,21 @@ namespace WebApp.Controllers
                         db.Student.Add(model);
                         db.SaveChanges();
                         //post create functionalities, write it by yourself
-
-                        return RedirectToAction("Index");
+                        TempData[Consts.TempDataVal.Final] = Consts.ResponseMessage.Success;
+                        return RedirectToAction("Test");
                     }
                     else
                     {
                         ModelState.AddModelError("summary", "Record with the same firstname, lastname, email, and phone number already exists");
-                        return View();
+                        return View(model);
                     }
                 }
                 catch (Exception ex)
                 {
-                    return View();
+                    return View(model);
                 }
             }
-            return View();
+            return View(model);
         }
 
         [HttpGet]
@@ -67,7 +76,7 @@ namespace WebApp.Controllers
             var existing = db.Student.Find(id);
             if (existing == null)
             {
-                ViewBag.message = "Record not found";
+                ViewBag.message = Consts.ResponseMessage.NotFound;
             }
             return View(existing);
         }
@@ -84,7 +93,7 @@ namespace WebApp.Controllers
 
                     if (existing == null)
                     {
-                        ViewBag.message = "Record not found";
+                        ViewBag.message = Consts.ResponseMessage.NotFound;
                         return View();
                     }
                     else
@@ -113,12 +122,13 @@ namespace WebApp.Controllers
             var existing = db.Student.Find(id);
             if (existing == null)
             {
-                ViewBag.message = "Record not found";
+                ViewBag.message = Consts.ResponseMessage.NotFound;
             }
             return View(existing);
         }
 
         [HttpPost]
+        
         public IActionResult Delete(Student model)
         {
             try
@@ -128,7 +138,33 @@ namespace WebApp.Controllers
 
                 if (existing == null)
                 {
-                    ViewBag.message = "Record not found";
+                    ViewBag.message = Consts.ResponseMessage.NotFound;
+                    return View();
+                }
+                else
+                {
+                    db.Student.Remove(existing);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+            }
+            catch (Exception ex)
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+        [HttpGet]
+        public IActionResult DeletebyId(int id)
+        {
+            try
+            {
+                //check if there is existing record
+                var existing = db.Student.Find(id);
+
+                if (existing == null)
+                {
+                    ViewBag.message = Consts.ResponseMessage.NotFound;
                     return View();
                 }
                 else

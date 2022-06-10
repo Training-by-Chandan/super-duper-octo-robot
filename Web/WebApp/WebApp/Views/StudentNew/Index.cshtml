@@ -3,6 +3,18 @@
 <div class="row">
     <a asp-action="create" asp-controller="studentnew" class="btn btn-outline-primary">Create new Student</a>
 </div>
+@{
+    var final = TempData[Consts.TempDataVal.Final] as string;
+    final = final == null ? "" : final;
+}
+@if(!string.IsNullOrWhiteSpace(final))
+{
+    <div class="row">
+        <span class="alert alert-success">
+            @final
+        </span>
+    </div>
+}
 <div class="row">
 
     <table class="table">
@@ -36,6 +48,10 @@
                          <a asp-action="delete" asp-controller="studentnew" asp-route-id="@item.Id">
                             <i class="fa fa-trash"></i>
                         </a>
+                        | 
+                        <button class="btn btn-danger" onclick="Delete(@item.Id)">
+                            Del
+                        </button>
                     </td>
                 </tr>
 
@@ -45,3 +61,15 @@
         </tbody>
     </table>
 </div>
+
+@section Scripts{
+    <script>
+        function Delete(id)
+        {
+            var res = confirm("Are you sure you want to delete the record?");
+            if (res) {
+                location.href = "https://localhost:44358/studentnew/DeletebyId?id=" + id;
+            }
+        }
+    </script>
+}
