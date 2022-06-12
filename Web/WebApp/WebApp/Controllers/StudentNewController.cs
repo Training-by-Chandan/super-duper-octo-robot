@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;
@@ -7,6 +8,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
+    [Authorize(Roles ="Admin")]
     public class StudentNewController : Controller
     {
         private readonly ApplicationDbContext db;
@@ -15,6 +17,7 @@ namespace WebApp.Controllers
         {
             this.db = db;
         }
+
         [HttpGet]
         public IActionResult Test()
         {
@@ -22,6 +25,7 @@ namespace WebApp.Controllers
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult Index()
         {
             var data = db.Student.Include(s => s.Classes);
@@ -36,7 +40,6 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-
         public IActionResult Create(Student model)
         {
             ViewData[Consts.ViewDataVal.ClassList] = new SelectList(db.Classes, "Id", "Name");
@@ -128,7 +131,6 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        
         public IActionResult Delete(Student model)
         {
             try

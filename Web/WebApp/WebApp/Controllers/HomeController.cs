@@ -16,6 +16,8 @@ namespace WebApp.Controllers
 
         public IActionResult Index()
         {
+            var cookie = Request.Cookies["name"];
+            ViewBag.cookie = cookie;
             var data = GenerateDataForHomeIndex();
             return View(data);
         }
@@ -29,6 +31,21 @@ namespace WebApp.Controllers
         {
             var data = GenerateDummyData();
             return View(data);
+        }
+
+        public IActionResult SetCookies(string key, string value)
+        {
+            try
+            {
+                Response.Cookies.Append(key, value, new CookieOptions() { Expires = DateTime.Now.AddSeconds(60), Path = "/Home/Index" });
+                HttpContext.Session.SetString(key, value);
+                var data = GenerateDataForHomeIndex();
+                return View("Index", data);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

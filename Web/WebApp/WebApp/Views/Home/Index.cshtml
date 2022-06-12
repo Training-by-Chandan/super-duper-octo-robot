@@ -1,7 +1,23 @@
 ﻿@model WebApp.ViewModels.HomeIndexViewModel
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
 @{
     ViewData["Title"] = "Home ";
+    var name = ViewBag.cookie;
 }
+
+<div class="row">
+    <p>
+        from Cookies
+    </p>
+    name = @name
+</div>
+<div class="row">
+   <p>
+       from  Session
+   </p> name = @HttpContextAccessor.HttpContext.Session.GetString("name");
+</div>
 <div class="row">
     @foreach (var item in Model.Boxes)
     {
