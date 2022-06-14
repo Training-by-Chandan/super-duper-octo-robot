@@ -1,5 +1,11 @@
 ﻿@model List<CategoryViewModel>
 
+<div class="row">
+    <a asp-action="Create" asp-controller="Category" class="btn btn-outline-success">
+        Create a new Category
+    </a>
+</div>
+&nbsp;
 @if (Model == null || Model.Count == 0)
 {
     <div class="row">

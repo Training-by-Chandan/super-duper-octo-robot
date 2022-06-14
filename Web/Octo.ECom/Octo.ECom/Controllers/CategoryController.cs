@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Octo.ECom.Models.ViewModels;
 using Octo.ECom.Services;
 
 namespace Octo.ECom.Controllers
@@ -18,6 +20,26 @@ namespace Octo.ECom.Controllers
         {
             var data = categoryService.GetAll();
             return View(data);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Categories = new SelectList(categoryService.GetAll(), "Id", "Name");
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(CategoryViewModel model)
+        {
+            ViewBag.Categories = new SelectList(categoryService.GetAll(), "Id", "Name");
+            if (ModelState.IsValid)
+            {
+                var res = categoryService.Create(model);
+                if (res.Item1)
+                    return RedirectToAction("Index");
+            }
+            return View(model);
         }
     }
 }
