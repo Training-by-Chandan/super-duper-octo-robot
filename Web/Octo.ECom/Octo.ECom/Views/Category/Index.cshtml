@@ -1,0 +1,35 @@
+﻿@model List<CategoryViewModel>
+
+@if (Model == null || Model.Count == 0)
+{
+    <div class="row">
+        <span class="alert alert-danger">
+            No Records found
+        </span>
+    </div>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Parent Category</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.ParentCategoryName</td>
+                    <td>
+                        <a href="#" class="btn btn-outline-success">Edit</a> |
+                        <a href="#" class="btn btn-outline-danger">Delete</a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
