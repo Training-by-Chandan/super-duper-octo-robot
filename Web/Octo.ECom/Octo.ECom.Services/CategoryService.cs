@@ -13,6 +13,10 @@ namespace Octo.ECom.Services
     {
         (bool, string) Create(CategoryViewModel model);
 
+        (bool, string) Delete(int id);
+
+        (bool, string) Edit(CategoryViewModel model);
+
         List<CategoryViewModel> GetAll();
 
         CategoryViewModel? GetById(int id);
@@ -79,6 +83,50 @@ namespace Octo.ECom.Services
                     };
 
                     return category.Create(cat);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
+        }
+
+        public (bool, string) Edit(CategoryViewModel model)
+        {
+            try
+            {
+                var existing = category.GetById(model.Id);
+                if (existing == null)
+                {
+                    return (false, "Record does not exists");
+                }
+                else
+                {
+                    existing.Name = model.Name;
+                    existing.Description = model.Description;
+                    existing.CategoryId = model.CategoryId;
+
+                    return category.Edit(existing);
+                }
+            }
+            catch (Exception ex)
+            {
+                return (false, ex.Message);
+            }
+        }
+
+        public (bool, string) Delete(int id)
+        {
+            try
+            {
+                var existing = category.GetById(id);
+                if (existing == null)
+                {
+                    return (false, "Record does not exists");
+                }
+                else
+                {
+                    return category.Delete(existing);
                 }
             }
             catch (Exception ex)

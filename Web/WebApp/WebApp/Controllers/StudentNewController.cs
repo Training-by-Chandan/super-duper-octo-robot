@@ -8,7 +8,7 @@ using WebApp.Models;
 
 namespace WebApp.Controllers
 {
-    [Authorize(Roles ="Admin")]
+    [Authorize(Roles = "Admin")]
     public class StudentNewController : Controller
     {
         private readonly ApplicationDbContext db;
@@ -55,6 +55,12 @@ namespace WebApp.Controllers
                         //create
                         db.Student.Add(model);
                         db.SaveChanges();
+                        //check if the user exists or not
+
+                        //if user does not exists, create the user
+
+                        //after creating user, send the  email an text notification
+
                         //post create functionalities, write it by yourself
                         TempData[Consts.TempDataVal.Final] = Consts.ResponseMessage.Success;
                         return RedirectToAction("Test");
