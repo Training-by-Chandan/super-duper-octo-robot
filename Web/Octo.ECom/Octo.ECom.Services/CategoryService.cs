@@ -25,12 +25,15 @@ namespace Octo.ECom.Services
     public class CategoryService : ICategoryService
     {
         private readonly ICategoryRepository category;
+        private readonly IEmailService emailService;
 
         public CategoryService(
-            ICategoryRepository category
+            ICategoryRepository category,
+            IEmailService emailService
             )
         {
             this.category = category;
+            this.emailService = emailService;
         }
 
         public List<CategoryViewModel> GetAll()
@@ -126,13 +129,27 @@ namespace Octo.ECom.Services
                 }
                 else
                 {
-                    return category.Delete(existing);
+                    var res = category.Delete(existing);
+                    if (res.Item1)
+                    {
+                        sendEmail();
+                    }
+                    return res;
                 }
             }
             catch (Exception ex)
             {
                 return (false, ex.Message);
             }
+        }
+
+        private void sendEmail()
+        {
+            //prepare body, subject etc
+            string body = "Category deleted" + "Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque odit id totam consectetur hic velit minima veritatis doloremque magnam! Quia dolor quis eum, ut dicta perspiciatis sapiente illum laborum aliquid.";
+            string subject = "category deleted";
+            string receipent = "bishal@gmail.com";
+            emailService.SendEmail(receipent: receipent, subject: subject, body: body);
         }
     }
 }

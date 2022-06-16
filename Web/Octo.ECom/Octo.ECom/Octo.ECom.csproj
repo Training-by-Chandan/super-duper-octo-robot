@@ -13,6 +13,7 @@
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.5" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.5" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.6" />
   </ItemGroup>
 
   <ItemGroup>
@@ -20,6 +21,10 @@
     <ProjectReference Include="..\Octo.Ecom.Models\Octo.ECom.Models.csproj" />
     <ProjectReference Include="..\Octo.ECom.Repository\Octo.ECom.Repository.csproj" />
     <ProjectReference Include="..\Octo.ECom.Services\Octo.ECom.Services.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\uploads\product\" />
   </ItemGroup>
 
 </Project>
