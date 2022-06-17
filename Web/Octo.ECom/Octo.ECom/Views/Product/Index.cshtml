@@ -12,7 +12,7 @@
 <table class="table">
     <thead>
         <tr>
-           
+           <th></th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -36,7 +36,9 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-           
+           <td>
+               <img src="@item.PicturePath" height="100" width="100" alt="@item.Name" />
+           </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
@@ -56,9 +58,9 @@
                 @Html.DisplayFor(modelItem => item.CategoryName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                @Html.ActionLink("Edit", "Edit", new {  id=item.Id  }) |
+                @Html.ActionLink("Details", "Details", new {  id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new {  id=item.Id  })
             </td>
         </tr>
 }

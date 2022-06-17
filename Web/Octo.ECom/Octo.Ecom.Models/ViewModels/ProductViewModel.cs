@@ -13,21 +13,25 @@ namespace Octo.ECom.Models.ViewModels
 
         [Required]
         [StringLength(200)]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Short Description")]
         public string ShortDescription { get; set; }
 
+        [Display(Name = "Long Description")]
+        [DataType(DataType.MultilineText)]
         public string? LongDescription { get; set; }
 
         public string? Brand { get; set; }
-        public string PicturePath { get; set; }
+        public string? PicturePath { get; set; }
         public Units Unit { get; set; }
         public double Price { get; set; }
         public double Stock { get; set; }
 
         public int CategoryId { get; set; }
 
-        public string CategoryName { get; set; }
+        public string? CategoryName { get; set; }
 
-        public string StockStr
+        public string? StockStr
         {
             get
             {
