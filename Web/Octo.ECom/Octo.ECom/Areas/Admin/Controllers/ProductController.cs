@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Octo.ECom.Models.ViewModels;
 using Octo.ECom.Services;
 using IHostingEnvironment = Microsoft.AspNetCore.Hosting.IHostingEnvironment;
 
-namespace Octo.ECom.Controllers
+namespace Octo.ECom.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize]
     public class ProductController : Controller
     {
         private readonly IProductService productService;

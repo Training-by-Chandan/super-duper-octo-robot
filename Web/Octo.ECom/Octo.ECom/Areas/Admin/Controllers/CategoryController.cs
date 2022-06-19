@@ -1,10 +1,13 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Octo.ECom.Models.ViewModels;
 using Octo.ECom.Services;
 
-namespace Octo.ECom.Controllers
+namespace Octo.ECom.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategoryService categoryService;

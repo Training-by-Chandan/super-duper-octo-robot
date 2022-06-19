@@ -12,14 +12,14 @@ using Octo.ECom.Data;
 namespace Octo.ECom.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20220616011218_productAdded")]
-    partial class productAdded
+    [Migration("20220619021824_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.5")
+                .HasAnnotation("ProductVersion", "6.0.6")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
@@ -49,6 +49,22 @@ namespace Octo.ECom.Data.Migrations
                         .HasFilter("[NormalizedName] IS NOT NULL");
 
                     b.ToTable("AspNetRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "721841da-b446-45e1-988c-29234d26e562",
+                            ConcurrencyStamp = "721841da-b446-45e1-988c-29234d26e562",
+                            Name = "Admin",
+                            NormalizedName = "ADMIN"
+                        },
+                        new
+                        {
+                            Id = "19fc5d8f-709f-43bb-99f4-4302e6493ed5",
+                            ConcurrencyStamp = "19fc5d8f-709f-43bb-99f4-4302e6493ed5",
+                            Name = "Employee",
+                            NormalizedName = "EMPLOYEE"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -139,6 +155,42 @@ namespace Octo.ECom.Data.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = "826d6171-a044-4f4c-b0b6-2979e0bb53ad",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "5569e10a-0f68-4217-b85d-0cebc66646e7",
+                            Email = "admin@admin.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "ADMIN@ADMIN.COM",
+                            NormalizedUserName = "ADMIN@ADMIN.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENonMaubhAIfSjbYpArZxN1gUPNSyZvgJACstbLsO9KBkGYUphfxRgLmU4Rj0CP0hw==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "1cc35525-072d-43f9-9e8b-7e0218deb56f",
+                            TwoFactorEnabled = false,
+                            UserName = "admin@admin.com"
+                        },
+                        new
+                        {
+                            Id = "95119256-753e-4d5c-a1bf-b307200b64b4",
+                            AccessFailedCount = 0,
+                            ConcurrencyStamp = "36ac8127-957e-46ff-a08d-30fc89806650",
+                            Email = "employee@employee.com",
+                            EmailConfirmed = false,
+                            LockoutEnabled = false,
+                            NormalizedEmail = "EMPLOYEE@EMPLOYEE.COM",
+                            NormalizedUserName = "EMPLOYEE@EMPLOYEE.COM",
+                            PasswordHash = "AQAAAAEAACcQAAAAENZ9WyyTxpeoU9LNBgYJfmpp2iEV3iwExRUOLp261R2VMYPTHnICWuh/0ZtOpricug==",
+                            PhoneNumber = "1234567890",
+                            PhoneNumberConfirmed = false,
+                            SecurityStamp = "355000d0-e638-4e2a-bf7d-8bdb7079f3a6",
+                            TwoFactorEnabled = false,
+                            UserName = "employee@employee.com"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -203,6 +255,18 @@ namespace Octo.ECom.Data.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            UserId = "826d6171-a044-4f4c-b0b6-2979e0bb53ad",
+                            RoleId = "721841da-b446-45e1-988c-29234d26e562"
+                        },
+                        new
+                        {
+                            UserId = "95119256-753e-4d5c-a1bf-b307200b64b4",
+                            RoleId = "19fc5d8f-709f-43bb-99f4-4302e6493ed5"
+                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
