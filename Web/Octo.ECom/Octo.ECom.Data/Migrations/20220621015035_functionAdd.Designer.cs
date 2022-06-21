@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Octo.ECom.Data;
 
@@ -11,9 +12,10 @@ using Octo.ECom.Data;
 namespace Octo.ECom.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220621015035_functionAdd")]
+    partial class functionAdd
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -159,16 +161,16 @@ namespace Octo.ECom.Data.Migrations
                         {
                             Id = "826d6171-a044-4f4c-b0b6-2979e0bb53ad",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "32dc1377-7b4d-4653-bebc-30eb3e871d18",
+                            ConcurrencyStamp = "4679d2ff-efa2-496e-aa14-92531de3be6a",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEBp450LV4B5JuwS09M8AKP7BIlGOypRhO5VV0Y5et5H0pwVK9VQPleHimcrUTo1+Vw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEFErG84Sx9ETLiCWjAa8vzftym0ER1jBbCjyzm6SbisIt+5Fo8xW4UmjcrZ8qMNxNw==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "900377c0-bcb7-40bf-9037-e889190f024f",
+                            SecurityStamp = "b5ebcd9b-d08d-4fe7-9e18-92570b8aa5fe",
                             TwoFactorEnabled = false,
                             UserName = "admin@admin.com"
                         },
@@ -176,16 +178,16 @@ namespace Octo.ECom.Data.Migrations
                         {
                             Id = "95119256-753e-4d5c-a1bf-b307200b64b4",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "eedcd6e4-a262-4367-a696-814cb6571469",
+                            ConcurrencyStamp = "79c51ea3-57ab-449c-8d5d-7f45c9c24576",
                             Email = "employee@employee.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "EMPLOYEE@EMPLOYEE.COM",
                             NormalizedUserName = "EMPLOYEE@EMPLOYEE.COM",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEEkglcnIeN1si3GvEIJNqy77GxMVOlagFdE3tFSY2950QhGgGPpXWheIXeqDJyvbw==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEGaH+XhyDXDDcIGq0Rg/gH8EKmS4HfUeaat40eVtoPvMlGD8VXYJdHaAKdsxd4bLVg==",
                             PhoneNumber = "1234567890",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "2293c83a-b232-4570-988a-fcdecdb37efb",
+                            SecurityStamp = "f66e174f-b75f-499d-9502-b48a3082cce7",
                             TwoFactorEnabled = false,
                             UserName = "employee@employee.com"
                         });

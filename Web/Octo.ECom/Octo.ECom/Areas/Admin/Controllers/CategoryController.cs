@@ -7,7 +7,7 @@ using Octo.ECom.Services;
 namespace Octo.ECom.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService categoryService;

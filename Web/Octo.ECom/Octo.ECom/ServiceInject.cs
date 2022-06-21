@@ -11,6 +11,9 @@ namespace Octo.ECom
 
             services.AddTransient<ICategoryRepository, CategoryRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IRoleRepository, RoleRepository>();
+            services.AddTransient<IUserRoleRepository, UserRoleRepository>();
 
             #endregion Repository
 
@@ -19,6 +22,7 @@ namespace Octo.ECom
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IProductService, ProductService>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IUserService, UserService>();
 
             #endregion Services
         }
