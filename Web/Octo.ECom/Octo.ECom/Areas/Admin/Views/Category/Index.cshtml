@@ -1,7 +1,7 @@
 ﻿@model List<CategoryViewModel>
 
 <div class="row">
-    <a asp-action="Create" asp-controller="Category" class="btn btn-outline-success">
+    <a href="/admin/category/create" class="btn btn-outline-success">
         Create a new Category
     </a>
 </div>
@@ -31,7 +31,7 @@ else
                     <td>@item.Name</td>
                     <td>@item.ParentCategoryName</td>
                     <td>
-                        <a asp-action="Edit" asp-controller="Category" asp-route-id="@item.Id" class="btn btn-outline-success">Edit</a>
+                        <a href="/admin/category/edit/@item.Id" class="btn btn-outline-success">Edit</a>
 
                         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" data-bs-id="@item.Id" data-bs-name="@item.Name">
                             Delete
@@ -45,7 +45,7 @@ else
 
     <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
         <div class="modal-dialog">
-            <form id="deleteFrm" asp-action="delete" asp-controller="category" method="get">
+            <form id="deleteFrm" action="/admin/category/delete" method="get">
 
                 <div class="modal-content">
                     <div class="modal-header">

@@ -1,4 +1,5 @@
-﻿using Octo.ECom.Models.Models;
+﻿using AutoMapper;
+using Octo.ECom.Models.Models;
 using Octo.ECom.Models.ViewModels;
 using Octo.ECom.Repository;
 using System;
@@ -26,27 +27,25 @@ namespace Octo.ECom.Services
     {
         private readonly ICategoryRepository category;
         private readonly IEmailService emailService;
+        private readonly IMapper mapper;
 
         public CategoryService(
             ICategoryRepository category,
-            IEmailService emailService
+            IEmailService emailService,
+            IMapper mapper
             )
         {
             this.category = category;
             this.emailService = emailService;
+            this.mapper = mapper;
         }
 
         public List<CategoryViewModel> GetAll()
         {
             var data = category.GetAll();
-            var ret = data.Select(p => new CategoryViewModel()
-            {
-                Id = p.Id,
-                Name = p.Name,
-                CategoryId = p.CategoryId,
-                Description = p.Description,
-                ParentCategoryName = p.ParentCategory == null ? "" : p.ParentCategory.Name
-            }).ToList();
+
+            var ret = mapper.Map<List<Category>, List<CategoryViewModel>>(data.ToList());
+
             return ret;
         }
 
@@ -56,14 +55,8 @@ namespace Octo.ECom.Services
             if (cat == null)
                 return null;
 
-            var catVm = new CategoryViewModel()
-            {
-                Id = cat.Id,
-                CategoryId = cat.CategoryId,
-                Description = cat.Description,
-                Name = cat.Name,
-                ParentCategoryName = cat.ParentCategory == null ? "" : cat.ParentCategory.Name
-            };
+            var catVm = mapper.Map<Category, CategoryViewModel>(cat);
+
             return catVm;
         }
 
@@ -78,12 +71,7 @@ namespace Octo.ECom.Services
                 }
                 else
                 {
-                    var cat = new Category()
-                    {
-                        Name = model.Name,
-                        Description = model.Description,
-                        CategoryId = model.CategoryId
-                    };
+                    var cat = mapper.Map<CategoryViewModel, Category>(model);
 
                     return category.Create(cat);
                 }
@@ -105,9 +93,7 @@ namespace Octo.ECom.Services
                 }
                 else
                 {
-                    existing.Name = model.Name;
-                    existing.Description = model.Description;
-                    existing.CategoryId = model.CategoryId;
+                    existing = mapper.Map<CategoryViewModel, Category>(model, existing);
 
                     return category.Edit(existing);
                 }

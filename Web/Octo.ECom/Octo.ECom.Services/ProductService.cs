@@ -1,4 +1,5 @@
-﻿using Octo.ECom.Models.Models;
+﻿using AutoMapper;
+using Octo.ECom.Models.Models;
 using Octo.ECom.Models.ViewModels;
 using Octo.ECom.Repository;
 using System;
@@ -27,31 +28,23 @@ namespace Octo.ECom.Services
     public class ProductService : IProductService
     {
         private readonly IProductRepository productRepository;
+        private readonly IMapper mapper;
 
         public ProductService(
-            IProductRepository productRepository
+            IProductRepository productRepository,
+            IMapper mapper
             )
         {
             this.productRepository = productRepository;
+            this.mapper = mapper;
         }
 
         public List<ProductViewModel> GetAll()
         {
             var data = productRepository.GetAll();
-            var ret = data.Select(p => new ProductViewModel()
-            {
-                Id = p.Id,
-                Name = p.Name,
-                CategoryId = p.CategoryId,
-                Brand = p.Brand,
-                CategoryName = p.Category == null ? "" : p.Category.Name,
-                LongDescription = p.LongDescription,
-                PicturePath = p.PicturePath,
-                Price = p.Price,
-                ShortDescription = p.ShortDescription,
-                Stock = p.Stock,
-                Unit = p.Unit
-            }).ToList();
+
+            var ret = mapper.Map<List<Product>, List<ProductViewModel>>(data.ToList());
+
             return ret;
         }
 
@@ -61,20 +54,7 @@ namespace Octo.ECom.Services
             if (p == null)
                 return null;
 
-            var productvm = new ProductViewModel()
-            {
-                Id = p.Id,
-                Name = p.Name,
-                CategoryId = p.CategoryId,
-                Brand = p.Brand,
-                CategoryName = p.Category == null ? "" : p.Category.Name,
-                LongDescription = p.LongDescription,
-                PicturePath = p.PicturePath,
-                Price = p.Price,
-                ShortDescription = p.ShortDescription,
-                Stock = p.Stock,
-                Unit = p.Unit
-            };
+            var productvm = mapper.Map<Product, ProductViewModel>(p);
             return productvm;
         }
 
@@ -82,18 +62,7 @@ namespace Octo.ECom.Services
         {
             try
             {
-                var product = new Product()
-                {
-                    Name = model.Name,
-                    CategoryId = model.CategoryId,
-                    Brand = model.Brand,
-                    LongDescription = model.LongDescription,
-                    PicturePath = model.PicturePath,
-                    Price = model.Price,
-                    ShortDescription = model.ShortDescription,
-                    Stock = model.Stock,
-                    Unit = model.Unit
-                };
+                var product = mapper.Map<ProductViewModel, Product>(model);
 
                 return productRepository.Create(product);
             }
@@ -114,15 +83,7 @@ namespace Octo.ECom.Services
                 }
                 else
                 {
-                    existing.Name = model.Name;
-                    existing.CategoryId = model.CategoryId;
-                    existing.Brand = model.Brand;
-                    existing.LongDescription = model.LongDescription;
-                    existing.PicturePath = model.PicturePath;
-                    existing.Price = model.Price;
-                    existing.ShortDescription = model.ShortDescription;
-                    existing.Stock = model.Stock;
-                    existing.Unit = model.Unit;
+                    existing = mapper.Map<ProductViewModel, Product>(model, existing);
 
                     return productRepository.Edit(existing);
                 }
