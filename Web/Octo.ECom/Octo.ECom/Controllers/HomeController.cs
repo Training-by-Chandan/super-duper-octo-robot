@@ -20,6 +20,7 @@ namespace Octo.ECom.Controllers
 
         public IActionResult Privacy()
         {
+            throw new Exception("Sending this intentionally");
             return View();
         }
 

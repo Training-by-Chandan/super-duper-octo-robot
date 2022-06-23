@@ -78,6 +78,7 @@ namespace Octo.ECom.Services
             }
             catch (Exception ex)
             {
+                //log this error
                 return (false, ex.Message);
             }
         }

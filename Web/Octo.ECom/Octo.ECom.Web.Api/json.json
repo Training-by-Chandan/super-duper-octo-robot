@@ -1,0 +1,14 @@
+{
+  "person": {
+    "basic": {
+      "firstName": "Chandan",
+      "lastName": "Bhagat"
+    },
+    "academics": {
+      "school": {
+        "name": "Siddhartha Shishu Sadan",
+        "address": "Biratnagar"
+      }
+    }
+  }
+}

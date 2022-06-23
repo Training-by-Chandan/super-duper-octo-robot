@@ -23,6 +23,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddControllersWithViews();
 
 ServiceInject.RegisterServices(builder.Services);
+builder.Services.AddApplicationInsightsTelemetry();
 
 var app = builder.Build();
 

@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octo.ECom", "Octo.ECom\Octo.ECom.csproj", "{2E2B52C7-60DB-4CD7-B466-EAB7D1B7A5DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octo.ECom", "Octo.ECom\Octo.ECom.csproj", "{2E2B52C7-60DB-4CD7-B466-EAB7D1B7A5DD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octo.ECom.Models", "Octo.Ecom.Models\Octo.ECom.Models.csproj", "{C2FA8946-8A1C-4B20-8151-C00D50DDA713}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octo.ECom.Models", "Octo.Ecom.Models\Octo.ECom.Models.csproj", "{C2FA8946-8A1C-4B20-8151-C00D50DDA713}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octo.ECom.Data", "Octo.ECom.Data\Octo.ECom.Data.csproj", "{004DCF48-E518-4ECE-90A9-B38C3E41A517}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octo.ECom.Data", "Octo.ECom.Data\Octo.ECom.Data.csproj", "{004DCF48-E518-4ECE-90A9-B38C3E41A517}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octo.ECom.Repository", "Octo.ECom.Repository\Octo.ECom.Repository.csproj", "{3735B1B5-A227-4E50-8A58-CE04400C0D23}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octo.ECom.Repository", "Octo.ECom.Repository\Octo.ECom.Repository.csproj", "{3735B1B5-A227-4E50-8A58-CE04400C0D23}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octo.ECom.Services", "Octo.ECom.Services\Octo.ECom.Services.csproj", "{8F26AD30-DA94-4A41-87C7-E185859896EB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Octo.ECom.Services", "Octo.ECom.Services\Octo.ECom.Services.csproj", "{8F26AD30-DA94-4A41-87C7-E185859896EB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Octo.ECom.Web.Api", "Octo.ECom.Web.Api\Octo.ECom.Web.Api.csproj", "{D3EAF895-ED04-445C-9B45-3DDE537608F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{8F26AD30-DA94-4A41-87C7-E185859896EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F26AD30-DA94-4A41-87C7-E185859896EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F26AD30-DA94-4A41-87C7-E185859896EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3EAF895-ED04-445C-9B45-3DDE537608F0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EAF895-ED04-445C-9B45-3DDE537608F0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EAF895-ED04-445C-9B45-3DDE537608F0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EAF895-ED04-445C-9B45-3DDE537608F0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

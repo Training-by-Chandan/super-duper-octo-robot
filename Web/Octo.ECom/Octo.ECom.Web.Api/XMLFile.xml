@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<person>
+	<basic>
+		<firstname>Chandan</firstname>
+		<lastName>Bhagat</lastName>
+	</basic>
+	<academics>
+		<school>
+			<name>Siddhartha Shishu Sadan</name>
+			<address>Biratnagar</address>
+		</school>
+	</academics>
+</person>
