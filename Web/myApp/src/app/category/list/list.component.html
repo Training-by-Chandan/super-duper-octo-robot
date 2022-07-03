@@ -1,0 +1,27 @@
+
+<div class="row">
+    <button class="btn btn-outline-primary" ngclick="getAllCategories()">Refresh</button>
+</div>
+<div class="row">
+    
+    <table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>CategoryId</th>
+            <th>ParentCategoryName</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cat of list">
+            <td>{{cat.id}}</td>
+            <td>{{cat.name}}</td>
+            <td>{{cat.description}}</td>
+            <td>{{cat.categoryId}}</td>
+            <td>{{cat.parentCategoryName}}</td>
+        </tr>
+    </tbody>
+</table>
+</div>

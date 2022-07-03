@@ -1,0 +1,24 @@
+<form [formGroup]="form" (ngSubmit)="createCategory()">
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name">
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <textarea rows="5" class="form-control" id="description" formControlName="description"></textarea>
+    </div>
+    <div class="form-group">
+        <label for="parentCategory">Parent Category</label>
+        <select rows="5" class="form-control" id="parentCategory" formControlName="categoryId">
+            <option *ngFor="let cat of list" [value]="cat.id">{{cat.name}}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        &nbsp;
+    </div>
+    <div class="form-group">
+      <button type="submit" class="btn btn-primary">Create</button>
+      &nbsp;
+      <button type="reset" class="btn btn-danger">Reset</button>
+    </div>
+</form>
